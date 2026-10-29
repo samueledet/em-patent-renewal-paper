@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[authoryear,round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+\setstretch{1.1}
+
+\sisetup{detect-all, group-minimum-digits=4}
+\newcommand{\pp}{\,pp}
+
+\title{The Invention, Not the Inventor:\\Patent Renewal by Emerging-Market Firms}
+\author{Samuel Edet\thanks{[Affiliation]. Email: samueledet@aims.ac.za. [Disclaimer and acknowledgements.]}}
+\date{Draft, October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Patents owned by firms in emerging markets lapse sooner than those of foreign owners in the same
+office, which is often read as a sign that the inventions are worth less to their owners or that the owners cannot
+afford to use them. Using renewal records for 2.6 million firm and university patents at the patent offices of
+China, Korea, Brazil, the United States, Japan, Germany and the United Kingdom, I show that most of this gap is a
+timing artefact: domestic patents in China and Korea are granted about two years earlier than foreign ones, and
+renewal fees start at grant. Measured from grant and compared at equal observable quality, emerging-market firms
+of every size keep their patents at least as long as firms in rich economies. Evidence from the same inventions
+patented at home and abroad, credit shocks, fee changes and two structural renewal models, including
+patent-level values estimated without reference to owner type, points the same way. Two differences remain:
+small emerging-market firms' patents gain more from being sold, and Chinese university patents are worth well
+under half as much as comparable foreign ones.
+
+\medskip
+\noindent\textbf{Keywords:} patent renewal, patent value, emerging markets, innovation, intellectual property\\
+\noindent\textbf{JEL:} O34, O31, O32, L26
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/data}
+\input{sections/timing}
+\input{sections/survival}
+\input{sections/values}
+\input{sections/conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

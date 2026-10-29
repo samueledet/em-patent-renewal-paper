@@ -1,0 +1,30 @@
+\section{Data and measurement}\label{sec:data}
+
+\paragraph{Patents and lapses.} The data are PATSTAT Global (Autumn 2025 edition). The sample is granted invention
+patents filed in 2000--2005 at the offices of China, Korea and Brazil (the emerging-market offices) and the
+United States, Japan, Germany and the United Kingdom, all of which record lapses in the INPADOC legal-event table.
+These cohorts can be followed for close to twenty years. A patent lapses at its first cessation event before
+19.5~years from filing; later cessations are expiry at full term.
+
+\paragraph{Owners.} Owner country is the first applicant's country, imputed from the patent family and the office
+of first filing where it is missing (mainly in China and Japan). Owners are grouped by sector and by size, measured
+as the number of distinct patent families their harmonised applicant identity filed in 2000--2020: firms with
+1--9, 10--99, 100--999 and 1{,}000 or more families, and universities and public research organisations.
+Individual inventors are excluded: their patents behave differently, and in China they were the main target of
+local filing subsidies in this period. ``Small firms'' are firms with 1--9 families. The main sample has
+2.6~million patents with a grant lag of up to ten years.
+
+\paragraph{Quality.} Observable quality is measured by forward citations to the patent family (logged), citations
+that block later claims (X and Y categories), citations received by age four, family size and the WIPO technology
+field (35 fields). Claims are recorded only for US publications.
+
+\paragraph{Design.} The basic comparison is between domestic and foreign owners in the same office, which holds
+fees, law and enforcement fixed. The emerging-market question is whether that domestic gap is larger in the
+emerging-market offices than in the rich-economy ones: a difference in differences, estimated as a linear
+probability model with office $\times$ filing-year and office $\times$ field fixed effects, office-specific
+citation slopes and office $\times$ owner-group effects. Standard errors are clustered by owner.
+
+\paragraph{Fees.} Renewal fee schedules for the seven offices were compiled from official sources by year of life
+and period. For the structural models, fees are deflated to 2024 prices with each country's consumer price index
+for the year paid and converted at 2024 purchasing-power parities \citep[World Development Indicators;][]{WDI};
+fees due after 2024 are held fixed in 2024 prices.
