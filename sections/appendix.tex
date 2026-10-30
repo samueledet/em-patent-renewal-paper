@@ -252,7 +252,7 @@ Kingdom and France. By office, the extra premium for small domestic sellers is 3
 \begin{threeparttable}
 \caption{Responses of small firms to fee changes}\label{tab:fees}
 \small
-% Source: em-patent-value notes section 12 (17_fee_response.py, firms with 1-9 families)
+% Source: em-patent-value output/fee_response.csv (17_fee_response.py, firms with 1-9 families)
 \begin{tabular}{llcc}
 \toprule
 Office & Variation & Coefficient & Elasticity \\
@@ -261,12 +261,16 @@ China & 85\% discount window extended (2016, 2018), intent to treat & 0.0034 (0.
 Korea & 30\%/50\% discounts for years 4+ (2014, 2016, 2018) & $-0.063$ (0.033) & not identified \\
 United States & stage-specific fee changes (2004, 2013, 2020) & 0.039 (0.020) & 0.18 \\
 United States & 2022 small-entity discount (50\% to 60\%) & 0.045 (0.028) & -- \\
+France & SME reductions for years 2--7 (2005, 2008), intent to treat & $-0.095$ (0.040) & not identified \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Panel of renewal decisions of firms with 1--9 families; outcome: the patent lapses at that payment.
 Regressor: log of the fee or fee multiplier the owner faces; controls are firms with 1{,}000+ families, which are never
-eligible. Korean lapse records end in 2019, so only the 2014--2018 windows identify the Korean discounts.
+eligible. Korean lapse records end in 2019, so only the 2014--2018 windows identify the Korean discounts. The French
+estimate has the wrong sign and keeps it with small-firm $\times$ filing-cohort effects ($-0.113$, 0.048); it is not
+read as an elasticity. Eligibility in France depends on employment (under 250, then 1{,}000 employees), which patent
+counts measure only roughly.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
