@@ -56,10 +56,13 @@ whose search report marks the patent X or Y. Grant lag is measured to the first 
 
 \paragraph{Fees.} Fee schedules by year of life and period come from official sources for each office (laws,
 decrees, fee regulations and office notices), with the basis of each fee: per year from filing (China, Germany, the
-United Kingdom), per year from registration with a per-claim component (Korea, Japan, with ten claims assumed), or
-three maintenance payments at 3.5, 7.5 and 11.5 years after grant (United States, with small-entity fees for firms
-with fewer than 100 families and universities). Fees are converted to 2024 PPP dollars with the consumer price index
-of the year paid; fees due after 2024 are held at 2024 prices.
+United Kingdom), per year from registration with a per-claim component (Korea, Japan, with ten claims assumed), three maintenance payments at 3.5, 7.5 and 11.5 years after grant (United States, with small-entity fees for firms
+with fewer than 100 families and universities), per year from filing from year 3 (Russia, where foreign owners paid
+a separate non-resident schedule until August 2012, in US dollars before 2009, converted at the year's exchange
+rate), per year from filing from year 2 (France) or year 1 (Czech Republic, where years 1--5 were prepaid at grant
+before July 2002), or per year from the grant announcement (Taiwan, whose 2002 schedule is assumed for 2000--2001). Fees are converted to 2024 PPP dollars with the consumer price index
+of the year paid (for Taiwan, the DGBAS index and the IMF implied PPP rate); fees due after 2024 are held at 2024
+prices. Russian lapse records end in 2022, so Russian patents are censored from mid-2022.
 
 \paragraph{Deterministic model.} A patent earns $r_0 d^t$ in year $t$ after grant. At decision $j$, at time $t_j$,
 the owner pays $c_j$ to keep the patent for $L_j$ years and renews if
@@ -101,20 +104,21 @@ fee in years 4--6 from March 2014 and 50\% in years 4 and later from April 2018.
 \caption{Learning model: rate of decline and fit}\label{tab:learning}
 \small
 % Source: em-patent-value output/learning_model_params*.csv, learning_model_fit*.csv (20_learning_model.py)
-\begin{tabular}{lcccccc}
+\begin{tabular}{lcccccccccc}
 \toprule
- & China & Korea & Japan & US & Germany & UK \\
+ & CN & KR & RU & TW & CZ & US & JP & DE & GB & FR \\
 \midrule
-Free estimate of $d$        & 0.47\tnote{a} & 0.67\tnote{a} & 0.73\tnote{a} & 0.47\tnote{a} & 0.851 & 0.840 \\
-$\sigma_0$ at $d = 0.85$    & 1.12 & 1.34 & 3.07 & 2.63 & 1.52 & 1.81 \\
-Shock $s$                   & 0.99 & 0.62 & 1.05 & 0.34 & 1.02 & 1.05 \\
-Learning $\varphi$          & 0.95 & 0.99 & 0.98 & 0.99 & 0.86 & 0.85 \\
-Mean absolute fit error (pp) & 2.9 & 3.7 & 2.7 & 1.6 & 2.4 & 2.1 \\
+Free estimate of $d$        & 0.47\tnote{a} & 0.67\tnote{a} & -- & -- & -- & 0.47\tnote{a} & 0.73\tnote{a} & 0.851 & 0.840 & -- \\
+$\sigma_0$ at $d = 0.85$    & 1.12 & 1.34 & 7.39\tnote{a} & 2.24 & 1.99 & 2.63 & 3.07 & 1.52 & 1.81 & 1.74 \\
+Shock $s$                   & 0.99 & 0.62 & 1.39 & 1.19 & 1.16 & 0.34 & 1.05 & 1.02 & 1.05 & 1.16 \\
+Learning $\varphi$          & 0.95 & 0.99 & 0.94 & 0.98 & 0.74 & 0.99 & 0.98 & 0.86 & 0.85 & 0.89 \\
+Fit error (pp)              & 2.9 & 3.7 & 6.5 & 2.9 & 3.4 & 1.6 & 2.7 & 2.4 & 2.1 & 2.9 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Fit error: predicted minus observed share alive at 4, 8 and 12 years after grant, by owner group.
 \item[a] Not identified: the estimate comes with an implausibly wide spread of initial values.
+\item --: decay rate not estimated freely for the offices added later; $d = 0.85$ throughout.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
