@@ -18,8 +18,7 @@ New Project > Import from GitHub > `em-patent-renewal-paper`. Compiler: pdfLaTeX
 
 ## Open items
 
-- Fill the `\tbd{}` placeholders (step 24 of `em-patent-value`: richer quality controls, matched comparison, same
-  invention, credit shocks, sale premium on the 5 + 5 office set; figure 2).
-- Value models for Russia, Taiwan, the Czech Republic and France once their fee schedules are compiled.
+- Compile and check the page budget (main text under 10 pages, total under 20).
+- Fee-response test for France (small-entity discounts of 2005 and 2008).
 - Literature review; check the bibliography.
 - Acknowledgements.
