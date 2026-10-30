@@ -1,0 +1,69 @@
+\section{What is at stake? Three policy levers}\label{sec:stake}
+
+The introduction set out two families of policy: if the invention is the problem, invest in research capability; if
+the inventor is, relieve owners' constraints through credit, fee relief or markets for technology. The renewal model
+can price the levers that the evidence points to on a common scale. I simulate each patent on its own fee path to
+expiry with the deterministic model of Section~\ref{sec:values}, change one thing at a time, and report the change
+in the returns owners earn from their patents per filing-year cohort, in 2024 PPP dollars and as a share of national
+R\&D spending (Table~\ref{tab:levers}). Fee changes are transfers between owners and the state, so they are shown
+separately and left out of the headline.
+
+\paragraph{Fee relief.} Suppose every eligible owner took up the Chinese and Korean fee discounts. Owners would pay
+less, by \$2.8 million a year for a cohort of small Chinese firms' patents, but they would keep their patents only
+marginally longer, and the returns they earn would rise by less than half a million dollars. Fees are small relative
+to what patents are worth, so cutting them changes few renewal decisions.
+
+\paragraph{Markets for technology.} Suppose small domestic firms' patents earned, from filing age four, what they would
+earn in the hands of a buyer. I calibrate the buyer's advantage to the extra survival of patents sold by small
+emerging-market firms in Section~\ref{sec:constraints}: 7.5 points over five years, net of the premium for small
+advanced-economy sellers. This requires returns about 50\% higher in China and 35\% higher in Korea. The returns from a
+cohort of small firms' patents would rise by about \$310 million in China, 41\% of their value, and \$50 million in
+Korea. This is an upper bound, since it reallocates every small firm's patent.
+
+\paragraph{University patenting.} Suppose Chinese universities' patents earned what foreign universities' patents earn
+in China at equal citations. A cohort would be worth about \$310 million more a year; with the typical university
+home premium of the advanced-economy offices as the benchmark instead, about \$180 million. The value of Chinese
+university patents would roughly double.
+
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{Value at stake per filing-year cohort (millions of 2024 PPP dollars)}\label{tab:levers}
+\small
+% Source: em-patent-value output/policy_levers.csv (26_policy_levers.py)
+\begin{tabular}{llrrrr}
+\toprule
+ & & Change in & Share of & Change in & Fee \\
+Lever & Population & returns & national R\&D & owner value & transfer \\
+\midrule
+\multicolumn{6}{l}{\emph{China}} \\
+Fee relief & Small firms & 0.05 & 0.00\% & 0.4\% & 2.8 \\
+Fee relief & Universities & 0.4 & 0.00\% & 1.7\% & 3.6 \\
+Markets for technology & Small firms & 310 & 0.33\% & 41\% & -- \\
+University patenting & Universities & 176--313 & 0.19--0.33\% & 73--130\% & -- \\
+\addlinespace
+\multicolumn{6}{l}{\emph{Korea}} \\
+Fee relief & Small firms & 0.4 & 0.00\% & 0.3\% & 0.5 \\
+Markets for technology & Small firms & 52 & 0.13\% & 16\% & -- \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Deterministic renewal model ($d = 0.85$), each patent simulated on its own fee path to expiry.
+Change in returns: returns owners earn from their patents, excluding fees; scaled to one filing-year cohort of
+domestic patents in the analysis sample (3{,}800 small-firm and 6{,}600 university patents a year in China, 4{,}000
+small-firm patents in Korea). National R\&D: gross domestic expenditure on R\&D, 2000--2005 average \citep{WDI}. Owner
+value: change in mean value at grant net of fees. Fee transfer: fees no longer paid to the office. Markets for
+technology: returns multiplied by 1.51 (China) and 1.36 (Korea) from filing age four, calibrated to the extra
+post-sale survival of small emerging-market sellers. University patenting: mean log returns raised to those of
+foreign universities in China (upper) or to the foreign level plus the average domestic--foreign university gap in the
+United States, Germany, the United Kingdom and France (lower).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\paragraph{Reading the numbers.} Three cautions apply. The figures are private returns to owners, not welfare: they
+leave out knowledge spillovers and the gain to users when a patent enters the public domain. The deterministic model
+gives conservative levels, several times below those of the learning model. And the markets-for-technology figure is
+an upper bound. The gap between the levers survives all three: relieving owners of fees is worth very little, while
+helping patents reach owners who can use them and improving what Chinese universities patent are each worth hundreds
+of millions of dollars per cohort, two to three orders of magnitude more.
