@@ -1,26 +1,146 @@
-\section{Additional results}\label{sec:appendix}
+\section{Data and choice of offices}\label{app:data}
+
+\paragraph{Lapse records.} PATSTAT's legal-event table (INPADOC) records renewal payments, lapses and expiries for
+the offices that report them. I scanned every authority for events in the categories ``cessation'', ``maintenance''
+and ``payment'' and measured, for granted invention patents filed 2000--2010: the share with a recorded cessation;
+the share of 2000--2005 filings whose first cessation comes within 15 years of filing (lapse rather than expiry);
+the number of grants with a domestic first applicant; and the years in which cessations are recorded. Event dates
+are effective dates unless missing or set to the placeholder 9999-12-31, in which case publication dates are used.
+Table~\ref{tab:coverage} summarises the scan. An office is usable if it records cessation for a large share of grants
+continuously over the period.
 
 \begin{table}[ht]
 \centering
 \begin{threeparttable}
-\caption{Domestic minus foreign owners, alive 8 years after grant, by office (pp)}\label{tab:byoffice}
+\caption{Lapse records in PATSTAT: candidate emerging-market offices}\label{tab:coverage}
 \small
-% Source: em-patent-value notes section 9 (16c_survival_from_grant.py)
-\begin{tabular}{lcccc}
+% Source: em-patent-value output/coverage_national.csv (22_coverage_scan.py)
+\begin{tabular}{lrccrcl}
 \toprule
-Office & Individuals & Firms, 1--9 & Firms, 100--999 & Firms, 1{,}000+ \\
+Office & Grants & Cessation & Lapsed by & Domestic & Years & Verdict \\
+ & 2000--10 & recorded & 15 years & grants & recorded & \\
 \midrule
-China   & $-$19.8 & 7.4    & 19.4   & 8.7 \\
-Korea   & 0.3     & 10.6   & 18.7   & 9.0 \\
-US      & $-$3.6  & $-$2.2 & 6.2    & 4.3 \\
-Japan   & 8.4     & 21.4   & 25.4   & 14.0 \\
-Germany & $-$6.3  & 3.4    & 7.5    & 3.7 \\
-UK      & $-$13.5 & $-$3.7 & $-$1.3 & 25.2 \\
+Russia         & 301{,}160 & 71\% & 74\% & 128{,}782 & 1987--2022 & included \\
+Taiwan         & 306{,}085 & 76\% & 53\% & 124{,}228 & 1994--2025 & included \\
+Czech Republic &   7{,}413 & 95\% & 62\% &   3{,}196 & 1990--2025 & included \\
+Hungary        &   4{,}160 & 66\% & 43\% &   1{,}290 & 1990--2024 & too few firm patents \\
+Poland         &  26{,}623 & 34\% & 35\% &  16{,}171 & 1998--2015 & records stop in 2015 \\
+Slovakia, Croatia & 2{,}406 / 2{,}254 & 85 / 97\% & 48 / 67\% & 638 / 1{,}000 & & very small \\
+\addlinespace
+\multicolumn{7}{l}{\emph{No lapse records ($\leq$1\% of grants):} Mexico, South Africa, India, Argentina, Malaysia,
+Ukraine,} \\
+\multicolumn{7}{l}{\quad Egypt, Colombia, Saudi Arabia, Romania, Bulgaria, Morocco, Peru} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item Notes: Within-office comparisons with citation and field controls. Individuals are shown for reference; they are
-excluded from the main analysis.
+\item \emph{Notes:} Granted invention patents filed 2000--2010. Lapsed by 15 years: share of 2000--2005 filings whose
+first cessation event comes within 15 years of filing. Domestic grants use the raw first-applicant country and are
+understated where it is often missing. Inclusion in the analysis also requires at least 1{,}000 domestic firm patents
+and 200 from small firms in the 2000--2005 sample; the Czech Republic (909 and 524) is kept as a small Central European
+case, Brazil (164 and 98) and Hungary (299 and 180) are dropped. Ten advanced-economy offices pass the same tests; the
+five largest by domestic firm patents with full records are used.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\paragraph{Advanced-economy offices.} Ten advanced-economy offices have usable records (the United States, Japan,
+Germany, the United Kingdom, France, Canada, Australia, Spain, the Netherlands and Sweden). To match the five
+emerging-market offices I use the first five. The results with all ten are very close (pooled estimate 4.5 points
+(1.4) against 4.3 (1.5)).
+
+\paragraph{Owners and quality.} Owner identities are PATSTAT's harmonised applicant names (HAN). Sector comes from
+PATSTAT's sector allocation. Citation counts are citing DOCDB families. Blocking citations are citing applications
+whose search report marks the patent X or Y. Grant lag is measured to the first publication flagged as a grant.
+
+\section{Renewal models}\label{app:models}
+
+\paragraph{Fees.} Fee schedules by year of life and period come from official sources for each office (laws,
+decrees, fee regulations and office notices), with the basis of each fee: per year from filing (China, Germany, the
+United Kingdom), per year from registration with a per-claim component (Korea, Japan, with ten claims assumed), or
+three maintenance payments at 3.5, 7.5 and 11.5 years after grant (United States, with small-entity fees for firms
+with fewer than 100 families and universities). Fees are converted to 2024 PPP dollars with the consumer price index
+of the year paid; fees due after 2024 are held at 2024 prices.
+
+\paragraph{Deterministic model.} A patent earns $r_0 d^t$ in year $t$ after grant. At decision $j$, at time $t_j$,
+the owner pays $c_j$ to keep the patent for $L_j$ years and renews if
+$r_0 d^{t_j} \sum_{s<L_j} (\beta d)^s \ge c_j$, i.e.\ if $r_0 \ge \tau_j$. With returns falling and fees rising
+this rule is optimal, and a patent survives decision $j$ if $r_0 \ge \max_{l\le j}\tau_l$. In addition, at each
+decision the owner drops the patent with probability $h = 1\%$ for reasons unrelated to value. With
+$\ln r_0 \sim N(\alpha_g + \gamma \ln(1+c), \sigma)$, the likelihood of each patent's lapse or censoring decision
+follows directly. The discount factor is $\beta = 0.9$. Estimation is by maximum likelihood, office by office, on up
+to 60{,}000 patents per owner group.
+
+\paragraph{Learning model.} Log returns $x_t$ start at $x_0 \sim N(\mu_i, \sigma_0)$ and evolve as
+$x_{t+\Delta} = x_t + \Delta \ln d + e$, with $e \sim N\big(0,\, s^2(\varphi^{2t}-\varphi^{2(t+\Delta)})/(-2\ln\varphi)\big)$:
+a random walk with drift whose shocks shrink at rate $\varphi$ as the owner learns. The value of a patent at decision
+$j$ solves
+\[
+V_j(x) = \max\Big\{0,\; e^x \sum_{u<L_j} (\beta d)^u - c_j + \beta^{t_{j+1}-t_j} (1-h)\, E\,V_{j+1}(x')\Big\},
+\]
+so a patent may be kept below its current fee for the option of later renewals. Thresholds come from backward
+induction on a grid for each fee path, run to expiry. Expectations use Gauss--Hermite quadrature. Survival is
+simulated with common random numbers and a smoothed renewal indicator, and the likelihood is built from lapse and
+censoring counts in cells of fee path $\times$ owner group $\times$ citation band. Table~\ref{tab:learning} reports the
+estimates.
+
+\paragraph{Patent-level values.} The learning model is re-estimated with a single prior for all owners
+($\mu_i$ depends on the citation band only). For each cell, 1{,}000 return paths are simulated; a patent that lapsed at
+decision $k$ weights each path by the probability of surviving to $k-1$ and lapsing at $k$, and a patent still alive
+at the end of the data by the probability of surviving all observed decisions, plus the value of optimal renewals
+after the data end. A patent's value is the weighted median over paths.
+
+\paragraph{Fee discounts.} For the bounds in Section~\ref{sec:values}, eligible owners are domestic firms with 1--99
+families and domestic universities. In China they pay 40\% of the fee in fee-years 1--3 from the grant year (to
+February 2001), 30\% in fee-years 1--3 (to August 2016), 15\% in fee-years 1--6 (to July 2018) and 15\% in fee-years
+1--10 (from August 2018). In Korea, registration fees for years 1--3 fall outside the model; owners pay 70\% of the
+fee in years 4--6 from March 2014 and 50\% in years 4 and later from April 2018.
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Learning model: rate of decline and fit}\label{tab:learning}
+\small
+% Source: em-patent-value output/learning_model_params*.csv, learning_model_fit*.csv (20_learning_model.py)
+\begin{tabular}{lcccccc}
+\toprule
+ & China & Korea & Japan & US & Germany & UK \\
+\midrule
+Free estimate of $d$        & 0.47\tnote{a} & 0.67\tnote{a} & 0.73\tnote{a} & 0.47\tnote{a} & 0.851 & 0.840 \\
+$\sigma_0$ at $d = 0.85$    & 1.12 & 1.34 & 3.07 & 2.63 & 1.52 & 1.81 \\
+Shock $s$                   & 0.99 & 0.62 & 1.05 & 0.34 & 1.02 & 1.05 \\
+Learning $\varphi$          & 0.95 & 0.99 & 0.98 & 0.99 & 0.86 & 0.85 \\
+Mean absolute fit error (pp) & 2.9 & 3.7 & 2.7 & 1.6 & 2.4 & 2.1 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Fit error: predicted minus observed share alive at 4, 8 and 12 years after grant, by owner group.
+\item[a] Not identified: the estimate comes with an implausibly wide spread of initial values.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\section{Additional results}\label{app:results}
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Domestic minus foreign owners within each office, alive 8 years after grant (pp)}\label{tab:within}
+\small
+% Source: em-patent-value output/ext_within_office.csv (23_extended_offices.py)
+\begin{tabular}{lcc@{\hspace{2.5em}}lcc}
+\toprule
+Office & Small firms & All firms & Office & Small firms & All firms \\
+\midrule
+China          & 6.9 (0.6)    & 11.3 (2.3) & United States  & 1.7 (0.3)    & 2.7 (1.2) \\
+Korea          & 4.6 (1.0)    & 13.7 (1.4) & Japan          & 17.8 (1.2)   & 17.5 (1.8) \\
+Russia         & $-3.0$ (1.5) & 0.9 (1.8)  & Germany        & 6.1 (1.6)    & 4.7 (1.7) \\
+Taiwan         & $-0.8$ (1.5) & 14.4 (3.2) & United Kingdom & $-0.1$ (1.4) & 2.1 (1.9) \\
+Czech Republic & 5.6 (5.0)    & 8.0 (3.2)  & France         & 2.7 (1.7)    & $-1.2$ (3.2) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Domestic minus foreign owners, with log citations, filing-year and field effects (and owner-group
+effects for all firms); standard errors clustered by owner.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -28,24 +148,110 @@ excluded from the main analysis.
 \begin{table}[ht]
 \centering
 \begin{threeparttable}
-\caption{Learning model: rate of decline and fit}\label{tab:learning}
+\caption{Richer quality controls: extra domestic gap in emerging-market offices (pp)}\label{tab:rich}
 \small
-% Source: em-patent-value notes section 14 (20_learning_model.py)
-\begin{tabular}{lcccccc}
+% Source: em-patent-value output/ext_rich_quality.csv (24_extended_checks.py)
+\begin{tabular}{lccc}
 \toprule
- & China & Korea & Japan & US & Germany & UK \\
+Owner group & Citations & + blocking, early citations, grant lag & + family size \\
 \midrule
-Free estimate of $d$ & 0.47\tnote{a} & 0.67\tnote{a} & 0.73\tnote{a} & 0.47\tnote{a} & 0.851 & 0.840 \\
-$\sigma_0$ at $d = 0.85$ & 1.12 & 1.34 & 3.07 & 2.63 & 1.52 & 1.81 \\
-Shock $s$ & 0.99 & 0.62 & 1.05 & 0.34 & 1.02 & 1.05 \\
-Learning $\varphi$ & 0.95 & 0.99 & 0.98 & 0.99 & 0.86 & 0.85 \\
-Mean absolute fit error (pp) & 2.9 & 3.7 & 2.7 & 1.6 & 2.4 & 2.1 \\
+Firms, 1--9 families & \tbd{} & \tbd{} & \tbd{} \\
+Firms, 10--99        & \tbd{} & \tbd{} & \tbd{} \\
+Firms, 100--999      & \tbd{} & \tbd{} & \tbd{} \\
+Firms, 1{,}000+      & \tbd{} & \tbd{} & \tbd{} \\
+Universities         & \tbd{} & \tbd{} & \tbd{} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item Notes: Fit error: predicted minus observed share alive at 4, 8 and 12 years after grant, by owner group.
-\item[a] Not identified: the estimate comes with an implausibly wide spread of initial values and values in the
-millions.
+\item \emph{Notes:} Coefficient $\delta$ of equation~\eqref{eq:did} by owner group, alive 8 years after grant, with
+office-specific slopes for each control. Family size is shown separately because international filing also reflects
+owner capacity.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\paragraph{Small against large domestic firms.} A comparison that involves no foreign owners matches domestic small
+firms' patents with domestic patents of firms with 100 or more families in exact cells of office $\times$ filing year
+$\times$ field $\times$ early-citation bin $\times$ blocking-citation bin $\times$ grant-lag bin. Small firms keep their
+patents \tbd{x.x} (\tbd{s.e.}) points less often than large firms in the advanced-economy offices, and the extra
+shortfall in emerging-market offices is \tbd{x.x} (\tbd{s.e.}).
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Same invention: home minus abroad, small firms minus larger firms (pp)}\label{tab:same}
+\small
+% Source: em-patent-value output/ext_same_invention.csv (24_extended_checks.py)
+\begin{tabular}{lcc@{\hspace{2.5em}}lcc}
+\toprule
+Origin & Estimate & Families & Origin & Estimate & Families \\
+\midrule
+China          & \tbd{} & \tbd{} & United States  & \tbd{} & \tbd{} \\
+Korea          & \tbd{} & \tbd{} & Japan          & \tbd{} & \tbd{} \\
+Russia         & \tbd{} & \tbd{} & Germany        & \tbd{} & \tbd{} \\
+Taiwan         & \tbd{} & \tbd{} & United Kingdom & \tbd{} & \tbd{} \\
+Czech Republic & \tbd{} & \tbd{} & France         & \tbd{} & \tbd{} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Inventions (DOCDB families) with granted patents at the owner's home office and at least one other
+study office; alive 8 years after grant on home $\times$ small-firm owner, with family and office $\times$ year fixed
+effects; standard errors clustered by owner. Families: inventions of small firms.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Credit shocks and sales}\label{tab:credit}
+\small
+% Source: em-patent-value output/ext_credit_shocks.csv, ext_sale_premium.csv (24_extended_checks.py)
+\begin{tabular}{lcc}
+\toprule
+ & Emerging-market offices & Advanced-economy offices \\
+\midrule
+\multicolumn{3}{l}{\emph{A. Lapse rate in credit-shock years (pp per year)}} \\
+Shock $\times$ small $\times$ domestic & \tbd{} & \tbd{} \\
+Baseline lapse rate, small domestic firms & \tbd{} & \tbd{} \\
+\addlinespace
+\multicolumn{3}{l}{\emph{B. Survival five years after a sale (pp)}} \\
+Sale & \multicolumn{2}{c}{\tbd{}} \\
+Sale $\times$ small domestic firm & \tbd{} & \tbd{} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Panel A: cells of office $\times$ owner group $\times$ domestic $\times$ age since grant $\times$
+citation tercile $\times$ year, weighted by patents at risk, with office $\times$ year, office $\times$ age $\times$
+citation-tercile and office $\times$ owner group $\times$ domestic effects; standard errors clustered by office
+$\times$ year. Shock years: 2008--09 in the advanced economies, Taiwan and the Czech Republic; 2003--04 and 2008--09 in
+Korea; 2013 and 2017--18 in China; 2008--09 and 2014--15 in Russia. Panel B: landmark design at ages 4--8, citations up
+to the landmark age and grant lag controlled; transfers recorded in China, Korea, Russia, Japan, Germany, the United
+Kingdom and France.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Responses of small firms to fee changes}\label{tab:fees}
+\small
+% Source: em-patent-value notes section 12 (17_fee_response.py, firms with 1-9 families)
+\begin{tabular}{llcc}
+\toprule
+Office & Variation & Coefficient & Elasticity \\
+\midrule
+China & 85\% discount window extended (2016, 2018), intent to treat & 0.0034 (0.0006) & 0.07 \\
+Korea & 30\%/50\% discounts for years 4+ (2014, 2016, 2018) & $-0.063$ (0.033) & not identified \\
+United States & stage-specific fee changes (2004, 2013, 2020) & 0.039 (0.020) & 0.18 \\
+United States & 2022 small-entity discount (50\% to 60\%) & 0.045 (0.028) & -- \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Panel of renewal decisions of firms with 1--9 families; outcome: the patent lapses at that payment.
+Regressor: log of the fee or fee multiplier the owner faces; controls are firms with 1{,}000+ families, which are never
+eligible. Korean lapse records end in 2019, so only the 2014--2018 windows identify the Korean discounts.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

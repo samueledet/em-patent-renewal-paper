@@ -8,42 +8,51 @@
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{threeparttable}
-\usepackage{siunitx}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.17}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{caption}
 \usepackage[authoryear,round]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage{setspace}
-\setstretch{1.1}
+\setstretch{1.05}
 
-\sisetup{detect-all, group-minimum-digits=4}
-\newcommand{\pp}{\,pp}
+\captionsetup{font=small, labelfont=bf, skip=4pt}
+\newcommand{\tbd}[1]{\textcolor{red}{[#1]}}          % numbers still to be filled from the running analysis
+\newcommand{\figurenotes}[1]{\par\vspace{2pt}{\footnotesize\noindent\emph{Notes:} #1\par}}
 
-\title{The Invention, Not the Inventor:\\Patent Renewal by Emerging-Market Firms}
-\author{Samuel Edet\thanks{[Affiliation]. Email: samueledet@aims.ac.za. [Disclaimer and acknowledgements.]}}
+\title{\textbf{The Invention, Not the Inventor:\\Patent Value in Emerging Markets}}
+\author{Samuel Edet\thanks{World Bank Group. Email: samueledet@aims.ac.za. The findings, interpretations and
+conclusions expressed in this paper are entirely those of the author and do not necessarily represent the views of
+the World Bank Group, its Executive Directors or the governments they represent. Claude Code was used to help code
+the data analysis and support the paper drafting. [Acknowledgements.]}}
 \date{Draft, October 2026}
 
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 
 \begin{abstract}
-\noindent Patents owned by firms in emerging markets lapse sooner than those of foreign owners in the same
-office, which is often read as a sign that the inventions are worth less to their owners or that the owners cannot
-afford to use them. Using renewal records for 2.6 million firm and university patents at the patent offices of
-China, Korea, Brazil, the United States, Japan, Germany and the United Kingdom, I show that most of this gap is a
-timing artefact: domestic patents in China and Korea are granted about two years earlier than foreign ones, and
-renewal fees start at grant. Measured from grant and compared at equal observable quality, emerging-market firms
-of every size keep their patents at least as long as firms in rich economies. Evidence from the same inventions
-patented at home and abroad, credit shocks, fee changes and two structural renewal models, including
-patent-level values estimated without reference to owner type, points the same way. Two differences remain:
-small emerging-market firms' patents gain more from being sold, and Chinese university patents are worth well
-under half as much as comparable foreign ones.
+\noindent Patents owned by firms in emerging markets lapse sooner than foreign-owned patents in the same office, a
+gap usually read as a sign that the inventions are worth less, or that their owners lack the finance and capacity
+to use them. Using renewal records for 3 million firm and university patents filed in 2000--2005 at the patent
+offices of five emerging economies (China, Korea, Russia, Taiwan and the Czech Republic) and five advanced ones (the
+United States, Japan, Germany, the United Kingdom and France), I show that most of the gap is a timing artefact:
+emerging-market offices grant domestic applicants' patents up to three and a half years sooner than foreign ones,
+and renewal fees start at grant. Measured from grant and compared at equal observable quality, emerging-market
+firms of every size keep their patents at least as long as firms in rich economies; small Russian firms are the
+exception. Evidence from the same inventions patented at home and abroad, credit shocks, fee changes and structural
+renewal models that value each patent from its own renewal history points the same way, and holds when every
+eligible owner is assumed to pay discounted fees. Two differences remain: small emerging-market firms' patents gain
+more from being sold, and Chinese university patents are worth well under half as much as comparable foreign ones.
 
 \medskip
-\noindent\textbf{Keywords:} patent renewal, patent value, emerging markets, innovation, intellectual property\\
-\noindent\textbf{JEL:} O34, O31, O32, L26
+\noindent\textbf{Keywords:} patent renewal; patent value; emerging markets; innovation; intellectual property;
+markets for technology\\
+\noindent\textbf{JEL codes:} O34, O31, O32, O57, L26
 \end{abstract}
 
+\newpage
+\setcounter{page}{1}
 \input{sections/introduction}
 \input{sections/data}
 \input{sections/timing}
@@ -54,6 +63,7 @@ under half as much as comparable foreign ones.
 \bibliographystyle{plainnat}
 \bibliography{references}
 
+\newpage
 \appendix
 \input{sections/appendix}
 

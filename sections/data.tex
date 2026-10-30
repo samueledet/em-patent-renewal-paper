@@ -1,30 +1,69 @@
-\section{Data and measurement}\label{sec:data}
+\section{Data and design}\label{sec:data}
 
-\paragraph{Patents and lapses.} The data are PATSTAT Global (Autumn 2025 edition). The sample is granted invention
-patents filed in 2000--2005 at the offices of China, Korea and Brazil (the emerging-market offices) and the
-United States, Japan, Germany and the United Kingdom, all of which record lapses in the INPADOC legal-event table.
-These cohorts can be followed for close to twenty years. A patent lapses at its first cessation event before
-19.5~years from filing; later cessations are expiry at full term.
+\paragraph{Patents and lapses.} The data are PATSTAT Global \citep[autumn 2025 edition;][]{PATSTAT}. The sample is
+granted invention patents filed in 2000--2005 at ten national offices, followed for close to twenty years. A patent
+lapses at its first cessation event in the INPADOC legal-event table before 19.5 years from filing; later cessations
+are expiry at full term. I chose the offices by scanning every authority in the legal-event table for the share of
+grants with a recorded cessation and the continuity of records over time (Appendix~\ref{app:data}). The
+emerging-market offices are those of China, Korea, Russia, Taiwan and the Czech Republic; the advanced-economy
+offices are those of the United States, Japan, Germany, the United Kingdom and France.
 
-\paragraph{Owners.} Owner country is the first applicant's country, imputed from the patent family and the office
-of first filing where it is missing (mainly in China and Japan). Owners are grouped by sector and by size, measured
-as the number of distinct patent families their harmonised applicant identity filed in 2000--2020: firms with
-1--9, 10--99, 100--999 and 1{,}000 or more families, and universities and public research organisations.
-Individual inventors are excluded: their patents behave differently, and in China they were the main target of
-local filing subsidies in this period. ``Small firms'' are firms with 1--9 families. The main sample has
-2.6~million patents with a grant lag of up to ten years.
+\paragraph{Owners.} An owner is domestic if the first applicant is from the office's country. Missing applicant
+countries (common in China and Japan) are imputed from the patent family and the office of first filing. Owners are
+grouped by sector and size, where size is the number of distinct patent families the harmonised applicant filed in
+2000--2020: firms with 1--9, 10--99, 100--999 and 1{,}000 or more families, and universities and public research
+organisations. ``Small firms'' have 1--9 families. Individual inventors are excluded: their patents behave
+differently, and in China they were the main target of local filing subsidies in this period. Patents granted more
+than ten years after filing are dropped. Table~\ref{tab:sample} describes the sample.
 
 \paragraph{Quality.} Observable quality is measured by forward citations to the patent family (logged), citations
-that block later claims (X and Y categories), citations received by age four, family size and the WIPO technology
-field (35 fields). Claims are recorded only for US publications.
+in search reports that block later claims (categories X and Y), citations received by age four, family size and the
+WIPO technology field (35 fields). Domestic patents in emerging-market offices are cited far less than foreign ones,
+by a factor of five in China and six in Korea, so quality controls matter.
 
 \paragraph{Design.} The basic comparison is between domestic and foreign owners in the same office, which holds
-fees, law and enforcement fixed. The emerging-market question is whether that domestic gap is larger in the
-emerging-market offices than in the rich-economy ones: a difference in differences, estimated as a linear
-probability model with office $\times$ filing-year and office $\times$ field fixed effects, office-specific
-citation slopes and office $\times$ owner-group effects. Standard errors are clustered by owner.
+fees, law and enforcement fixed. Foreign owners are mostly multinationals protecting a foreign market, so domestic
+and foreign patents differ everywhere; the question is whether the domestic shortfall is larger in emerging-market
+offices. For patent $i$ of owner group $g$ in office $o$, filed in year $t$ in field $f$,
+\begin{equation}\label{eq:did}
+  y_{i} = \beta\, D_i + \delta\, D_i \times EM_o + \theta_o \ln(1+c_i) + \mu_{ot} + \lambda_{of} + \kappa_{og}
+  + \varepsilon_i ,
+\end{equation}
+where $y_i$ indicates that the patent is alive eight years after grant, $D_i$ marks a domestic owner, $EM_o$ an
+emerging-market office and $c_i$ citations. The coefficient of interest, $\delta$, is the extra domestic--foreign gap
+in emerging-market offices, in percentage points. Standard errors are clustered by owner.
 
-\paragraph{Fees.} Renewal fee schedules for the seven offices were compiled from official sources by year of life
-and period. For the structural models, fees are deflated to 2024 prices with each country's consumer price index
-for the year paid and converted at 2024 purchasing-power parities \citep[World Development Indicators;][]{WDI};
-fees due after 2024 are held fixed in 2024 prices.
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{The sample: granted patents filed 2000--2005, firms and universities}\label{tab:sample}
+\small
+% Source: em-patent-value output/ext_counts.csv (23_extended_offices.py)
+\begin{tabular}{lrrrrcc}
+\toprule
+ & & \multicolumn{3}{c}{Domestic owners} & \multicolumn{2}{c}{Grant lag, small firms} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-7}
+Office & Patents & Firms & Small firms & Universities & Domestic & Foreign \\
+\midrule
+China          &   363{,}574 &  66{,}549 & 22{,}873 & 39{,}836 & 3.3 & 5.0 \\
+Korea          &   371{,}332 & 212{,}534 & 23{,}926 & 19{,}530 & 2.3 & 5.8 \\
+Russia         &   129{,}038 &  14{,}368 &  9{,}188 & 15{,}738 & 1.7 & 4.6 \\
+Taiwan         &   150{,}743 &  42{,}648 &  4{,}225 &  6{,}665 & 1.6 & 2.2 \\
+Czech Republic &     4{,}061 &       909 &      524 &       95 & 3.2 & 6.5 \\
+\addlinespace
+United States  &   980{,}998 & 439{,}742 & 71{,}177 & 28{,}373 & 2.4 & 2.4 \\
+Japan          &   775{,}826 & 618{,}434 & 20{,}337 & 15{,}540 & 4.8 & 5.3 \\
+Germany        &    81{,}937 &  59{,}846 &  9{,}065 &  3{,}587 & 2.5 & 3.5 \\
+United Kingdom &    41{,}383 &  11{,}910 &  5{,}412 &      445 & 3.1 & 2.9 \\
+France         &    62{,}937 &  43{,}245 &  9{,}580 &  3{,}753 & 2.4 & 2.6 \\
+\midrule
+Total          & 2{,}961{,}829 & & & & & \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Granted invention patents filed 2000--2005 with a grant lag of up to ten years; individual
+owners excluded. Small firms: firms with 1--9 patent families in 2000--2020. Grant lag: median years from filing to
+the first grant publication. Source: PATSTAT Global, autumn 2025.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
