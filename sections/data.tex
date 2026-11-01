@@ -10,11 +10,12 @@ offices are those of the United States, Japan, Germany, the United Kingdom and F
 
 \paragraph{Owners.} An owner is domestic if the first applicant is from the office's country. Missing applicant
 countries (common in China and Japan) are imputed from the patent family and the office of first filing. Owners are
-grouped by sector and size, where size is the number of distinct patent families the harmonised applicant filed in
-2000--2020: firms with 1--9, 10--99, 100--999 and 1{,}000 or more families, and universities and public research
-organisations. ``Small firms'' have 1--9 families. Individual inventors are excluded: their patents behave
-differently, and in China they were the main target of local filing subsidies in this period. Patents granted more
-than ten years after filing are dropped. Table~\ref{tab:sample} describes the sample.
+grouped by sector and size. Size is the number of distinct inventions (DOCDB families) the harmonised applicant filed
+worldwide in 2000--2005, the cohort's own filing window, so that it is measured before the outcomes: small firms have
+1--9 inventions, mid-sized firms 10--99 and large firms 100 or more; universities and public research organisations
+form a fourth group. Individual inventors are excluded: their patents behave differently, and in China they were the
+main target of local filing subsidies in this period. Patents granted more than ten years after filing are dropped.
+Table~\ref{tab:sample} describes the sample.
 
 \paragraph{Quality.} Observable quality is measured by forward citations to the patent family (logged), citations
 in search reports that block later claims (categories X and Y), citations received by age four, family size and the
@@ -31,7 +32,7 @@ offices. For patent $i$ of owner group $g$ in office $o$, filed in year $t$ in f
 \end{equation}
 where $y_i$ indicates that the patent is alive eight years after grant,\footnote{Survival is measured from
 grant because renewal fees are due from grant. Grant lags differ across offices and between domestic and foreign
-owners in the same office (Table~\ref{tab:sample} and Appendix Figure~\ref{fig:lags}), so a fixed age from filing would
+owners in the same office (Appendix Table~\ref{tab:lags}), so a fixed age from filing would
 compare patents that have faced different numbers of renewal decisions.} $D_i$ marks a domestic owner, $EM_o$ an
 emerging-market office and $c_i$ citations. The coefficient of interest, $\delta$, is the extra domestic--foreign gap
 in emerging-market offices, in percentage points. Standard errors are clustered by owner.
@@ -41,32 +42,34 @@ in emerging-market offices, in percentage points. Standard errors are clustered 
 \begin{threeparttable}
 \caption{The sample: granted patents filed 2000--2005, firms and universities}\label{tab:sample}
 \small
-% Source: em-patent-value output/ext_counts.csv (23_extended_offices.py)
-\begin{tabular}{lrrrrcc}
+% Source: em-patent-value output/sample_counts.csv (29_sample_tables.py)
+\begin{tabular}{lrrrrrrr}
 \toprule
- & & \multicolumn{3}{c}{Domestic owners} & \multicolumn{2}{c}{Grant lag, small firms} \\
-\cmidrule(lr){3-5}\cmidrule(lr){6-7}
-Office & Patents & Firms & Small firms & Universities & Domestic & Foreign \\
+ & & \multicolumn{3}{c}{Domestic owners} & \multicolumn{3}{c}{Foreign owners} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Office & Patents & Small & Mid-sized & Large & Small & Mid-sized & Large \\
 \midrule
-China          &   363{,}574 &  66{,}549 & 22{,}873 & 39{,}836 & 3.3 & 5.0 \\
-Korea          &   371{,}332 & 212{,}534 & 23{,}926 & 19{,}530 & 2.3 & 5.8 \\
-Russia         &   129{,}038 &  14{,}368 &  9{,}188 & 15{,}738 & 1.7 & 4.6 \\
-Taiwan         &   150{,}743 &  42{,}648 &  4{,}225 &  6{,}665 & 1.6 & 2.2 \\
-Czech Republic &     4{,}061 &       909 &      524 &       95 & 3.2 & 6.5 \\
+China          &   363{,}574 & 26{,}155 & 12{,}411 &  27{,}983 & 41{,}845 & 40{,}870 & 143{,}289 \\
+Korea          &   371{,}332 & 33{,}505 & 21{,}556 & 157{,}473 &  8{,}283 & 16{,}088 &  50{,}457 \\
+Russia         &   129{,}038 & 10{,}130 &  3{,}397 &       841 &  8{,}202 &  6{,}144 &   4{,}993 \\
+Taiwan         &   150{,}743 &  6{,}038 &  8{,}190 &  28{,}420 &  7{,}510 & 15{,}834 &  76{,}313 \\
+Czech Republic &     4{,}061 &      584 &      325 &        -- &      571 &      826 &   1{,}249 \\
 \addlinespace
-United States  &   980{,}998 & 439{,}742 & 71{,}177 & 28{,}373 & 2.4 & 2.4 \\
-Japan          &   775{,}826 & 618{,}434 & 20{,}337 & 15{,}540 & 4.8 & 5.3 \\
-Germany        &    81{,}937 &  59{,}846 &  9{,}065 &  3{,}587 & 2.5 & 3.5 \\
-United Kingdom &    41{,}383 &  11{,}910 &  5{,}412 &      445 & 3.1 & 2.9 \\
-France         &    62{,}937 &  43{,}245 &  9{,}580 &  3{,}753 & 2.4 & 2.6 \\
+United States  &   980{,}998 & 77{,}598 & 87{,}443 & 274{,}701 & 47{,}953 & 66{,}673 & 338{,}738 \\
+Japan          &   775{,}826 & 23{,}780 & 55{,}011 & 539{,}643 &  5{,}561 &  9{,}718 &  27{,}163 \\
+Germany        &    81{,}937 & 11{,}218 & 15{,}326 &  33{,}302 &  1{,}669 &  3{,}104 &  13{,}403 \\
+United Kingdom &    41{,}383 &  6{,}095 &  4{,}085 &   1{,}730 &  3{,}219 &  5{,}028 &  19{,}964 \\
+France         &    62{,}937 & 11{,}228 & 10{,}448 &  21{,}569 &  1{,}465 &  1{,}957 &   8{,}368 \\
 \midrule
-Total          & 2{,}961{,}829 & & & & & \\
+Total          & 2{,}961{,}829 & 206{,}331 & 218{,}192 & 1{,}085{,}662 & 126{,}278 & 166{,}242 & 683{,}937 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Granted invention patents filed 2000--2005 with a grant lag of up to ten years; individual
-owners excluded. Small firms: firms with 1--9 patent families in 2000--2020. Grant lag: median years from filing to
-the first grant publication. Source: PATSTAT Global, autumn 2025.
+owners excluded. Patents: all firms, universities and owners of unknown type. Firm size: inventions (DOCDB families)
+filed worldwide by the harmonised applicant in 2000--2005; small 1--9, mid-sized 10--99, large 100 or more. No Czech
+firm reaches 100. Universities and public research organisations hold 133{,}562 domestic and 25{,}743 foreign
+patents. Source: PATSTAT Global, autumn 2025.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
