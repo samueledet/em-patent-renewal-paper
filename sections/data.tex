@@ -2,8 +2,8 @@
 
 \paragraph{Patents and lapses.} The data are PATSTAT Global \citep[autumn 2025 edition;][]{PATSTAT}. The sample is
 granted invention patents filed in 2000--2005 at ten national offices, followed for close to twenty years. A patent
-lapses at its first cessation event in the INPADOC legal-event table before 19.5 years from filing; later cessations
-are expiry at full term. I chose the offices by scanning every authority in the legal-event table for the share of
+lapses if the INPADOC legal-event table records its first cessation within 19.5 years of filing; a later cessation
+marks expiry at full term. I chose the offices by scanning every authority in the legal-event table for the share of
 grants with a recorded cessation and the continuity of records over time (Appendix~\ref{app:data}). The
 emerging-market offices are those of China, Korea, Russia, Taiwan and the Czech Republic; the advanced-economy
 offices are those of the United States, Japan, Germany, the United Kingdom and France.
@@ -15,7 +15,9 @@ worldwide in 2000--2005, the cohort's own filing window, so that it is measured 
 1--9 inventions, mid-sized firms 10--99 and large firms 100 or more; universities and public research organisations
 form a fourth group. Individual inventors are excluded: their patents behave differently, and in China they were the
 main target of local filing subsidies in this period. Patents granted more than ten years after filing are dropped.
-Table~\ref{tab:sample} describes the sample.
+Table~\ref{tab:sample} describes the sample. It covers about 195{,}000 small firms, 29{,}000 mid-sized firms,
+4{,}500 large firms and 17{,}000 universities and public research organisations; panel B breaks them down by office
+group.
 
 \paragraph{Quality.} Observable quality is measured by forward citations to the patent family (logged), citations
 in search reports that block later claims (categories X and Y), citations received by age four, family size and the
@@ -52,6 +54,7 @@ in emerging-market offices, in percentage points. Standard errors are clustered 
 \cmidrule(lr){3-5}\cmidrule(lr){7-9}
 Office & Patents & Small & Mid & Large & Univ. & Small & Mid & Large & Univ. \\
 \midrule
+\multicolumn{10}{l}{\emph{A. Patents, by office}} \\
 China          &   363{,}574 & 26{,}155 & 12{,}411 &  27{,}983 & 39{,}836 & 41{,}845 & 40{,}870 & 143{,}289 &  3{,}982 \\
 Korea          &   371{,}332 & 33{,}505 & 21{,}556 & 157{,}473 & 19{,}530 &  8{,}283 & 16{,}088 &  50{,}457 &  1{,}248 \\
 Russia         &   129{,}038 & 10{,}130 &  3{,}397 &       841 & 15{,}738 &  8{,}202 &  6{,}144 &   4{,}993 &      467 \\
@@ -65,13 +68,21 @@ United Kingdom &    41{,}383 &  6{,}095 &  4{,}085 &   1{,}730 &      445 &  3{,
 France         &    62{,}937 & 11{,}228 & 10{,}448 &  21{,}569 &  3{,}753 &  1{,}465 &  1{,}957 &   8{,}368 &      162 \\
 \midrule
 Total          & 2{,}961{,}829 & 206{,}331 & 218{,}192 & 1{,}085{,}662 & 133{,}562 & 126{,}278 & 166{,}242 & 683{,}937 & 25{,}743 \\
+\midrule
+\multicolumn{10}{l}{\emph{B. Owners, by office group}} \\
+% Source: em-patent-value output/owner_counts.csv (29b_owner_counts.py)
+Emerging       &   & 47{,}837 &  3{,}560 &     472 & 10{,}766 & 43{,}847 & 10{,}500 &   2{,}511 &  2{,}415 \\
+Advanced       &   & 75{,}448 & 15{,}703 &   2{,}913 &  2{,}648 & 39{,}775 & 10{,}665 &   2{,}261 &  2{,}551 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Granted invention patents filed 2000--2005 with a grant lag of up to ten years; individual
 owners excluded. Patents: all firms, universities and owners of unknown type. Firm size: inventions (DOCDB families)
 filed worldwide by the harmonised applicant in 2000--2005; small 1--9, mid-sized 10--99, large 100 or more; no Czech
-firm reaches 100. Univ.: universities and public research organisations. Source: PATSTAT Global, autumn 2025.
+firm reaches 100. Univ.: universities and public research organisations. Panel B: distinct applicants with at least
+one sample patent in the five offices of the group, each counted once; a firm from one emerging economy patenting in
+another counts in both rows of that group. Applicants without a harmonised name are counted once per patent, so the
+small-firm counts are upper bounds. Source: PATSTAT Global, autumn 2025.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
