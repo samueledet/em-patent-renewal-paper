@@ -48,45 +48,14 @@ Germany, the United Kingdom, France, Canada, Australia, Spain, the Netherlands a
 emerging-market offices I use the first five. The results with all ten are very close (pooled estimate 4.5 points
 (1.4) against 4.3 (1.5)).
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Grant lags by owner and firm size (median years from filing to grant)}\label{tab:lags}
-\small
-% Source: em-patent-value output/sample_lags.csv (29_sample_tables.py)
-\begin{tabular}{lcccccc}
-\toprule
- & \multicolumn{3}{c}{Domestic owners} & \multicolumn{3}{c}{Foreign owners} \\
-\cmidrule(lr){2-4}\cmidrule(lr){5-7}
-Office & Small & Mid-sized & Large & Small & Mid-sized & Large \\
-\midrule
-China          & 3.4 & 3.6 & 3.7 & 5.2 & 5.1 & 4.5 \\
-Korea          & 2.2 & 2.2 & 2.4 & 6.0 & 6.0 & 4.8 \\
-Russia         & 1.7 & 1.7 & 1.8 & 4.6 & 4.7 & 4.7 \\
-Taiwan         & 1.7 & 1.6 & 1.7 & 2.3 & 2.7 & 2.4 \\
-Czech Republic & 3.2 & 3.4 & --  & 6.5 & 6.8 & 7.0 \\
-\addlinespace
-United States  & 2.4 & 2.5 & 2.7 & 2.4 & 2.4 & 2.5 \\
-Japan          & 4.8 & 5.5 & 5.6 & 5.3 & 5.8 & 5.8 \\
-Germany        & 2.6 & 2.5 & 2.9 & 3.6 & 4.0 & 4.9 \\
-United Kingdom & 3.1 & 3.1 & 2.8 & 2.9 & 2.9 & 2.7 \\
-France         & 2.4 & 2.4 & 2.3 & 2.7 & 3.0 & 3.3 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Median years from filing to the first grant publication, patents of Table~\ref{tab:sample}. Firm
-size as in Table~\ref{tab:sample}. Many foreign applications enter through the international (PCT) route, which adds
-up to 30 months before national examination begins.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.92\textwidth]{figures/fig1_grant_lags.png}
+\includegraphics[width=\textwidth]{figures/fig1_grant_lags.png}
 \caption{Grant lags by owner and firm size}\label{fig:lags}
-\figurenotes{Median years from filing to the first grant publication, as in Table~\ref{tab:lags}. Circles: domestic
-owners; diamonds: foreign owners. No Czech firm has 100 or more inventions.}
+\figurenotes{Median years from filing to the first grant publication, patents of Table~\ref{tab:sample}; firm size
+as in Table~\ref{tab:sample}. Circles: domestic owners; diamonds: foreign owners. No Czech firm has 100 or more
+inventions. Many foreign applications enter through the international (PCT) route, which adds up to 30 months before
+national examination begins. Source: em-patent-value output/sample\_lags.csv.}
 \end{figure}
 
 \paragraph{Owners and quality.} Owner identities are PATSTAT's harmonised applicant names (HAN). Sector comes from

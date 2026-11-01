@@ -32,7 +32,7 @@ offices. For patent $i$ of owner group $g$ in office $o$, filed in year $t$ in f
 \end{equation}
 where $y_i$ indicates that the patent is alive eight years after grant,\footnote{Survival is measured from
 grant because renewal fees are due from grant. Grant lags differ across offices and between domestic and foreign
-owners in the same office (Appendix Table~\ref{tab:lags} and Figure~\ref{fig:lags}), so a fixed age from filing would
+owners in the same office (Appendix Figure~\ref{fig:lags}), so a fixed age from filing would
 compare patents that have faced different numbers of renewal decisions.} $D_i$ marks a domestic owner, $EM_o$ an
 emerging-market office and $c_i$ citations. The coefficient of interest, $\delta$, is the extra domestic--foreign gap
 in emerging-market offices, in percentage points. Standard errors are clustered by owner.
@@ -43,33 +43,35 @@ in emerging-market offices, in percentage points. Standard errors are clustered 
 \caption{The sample: granted patents filed 2000--2005, firms and universities}\label{tab:sample}
 \small
 % Source: em-patent-value output/sample_counts.csv (29_sample_tables.py)
-\begin{tabular}{lrrrrrrr}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrrr}
 \toprule
- & & \multicolumn{3}{c}{Domestic owners} & \multicolumn{3}{c}{Foreign owners} \\
-\cmidrule(lr){3-5}\cmidrule(lr){6-8}
-Office & Patents & Small & Mid-sized & Large & Small & Mid-sized & Large \\
+ & & \multicolumn{4}{c}{Domestic owners} & \multicolumn{4}{c}{Foreign owners} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-10}
+ & & \multicolumn{3}{c}{Firms} & & \multicolumn{3}{c}{Firms} & \\
+\cmidrule(lr){3-5}\cmidrule(lr){7-9}
+Office & Patents & Small & Mid & Large & Univ. & Small & Mid & Large & Univ. \\
 \midrule
-China          &   363{,}574 & 26{,}155 & 12{,}411 &  27{,}983 & 41{,}845 & 40{,}870 & 143{,}289 \\
-Korea          &   371{,}332 & 33{,}505 & 21{,}556 & 157{,}473 &  8{,}283 & 16{,}088 &  50{,}457 \\
-Russia         &   129{,}038 & 10{,}130 &  3{,}397 &       841 &  8{,}202 &  6{,}144 &   4{,}993 \\
-Taiwan         &   150{,}743 &  6{,}038 &  8{,}190 &  28{,}420 &  7{,}510 & 15{,}834 &  76{,}313 \\
-Czech Republic &     4{,}061 &      584 &      325 &        -- &      571 &      826 &   1{,}249 \\
+China          &   363{,}574 & 26{,}155 & 12{,}411 &  27{,}983 & 39{,}836 & 41{,}845 & 40{,}870 & 143{,}289 &  3{,}982 \\
+Korea          &   371{,}332 & 33{,}505 & 21{,}556 & 157{,}473 & 19{,}530 &  8{,}283 & 16{,}088 &  50{,}457 &  1{,}248 \\
+Russia         &   129{,}038 & 10{,}130 &  3{,}397 &       841 & 15{,}738 &  8{,}202 &  6{,}144 &   4{,}993 &      467 \\
+Taiwan         &   150{,}743 &  6{,}038 &  8{,}190 &  28{,}420 &  6{,}665 &  7{,}510 & 15{,}834 &  76{,}313 &      916 \\
+Czech Rep.     &     4{,}061 &      584 &      325 &        -- &       95 &      571 &      826 &   1{,}249 &       24 \\
 \addlinespace
-United States  &   980{,}998 & 77{,}598 & 87{,}443 & 274{,}701 & 47{,}953 & 66{,}673 & 338{,}738 \\
-Japan          &   775{,}826 & 23{,}780 & 55{,}011 & 539{,}643 &  5{,}561 &  9{,}718 &  27{,}163 \\
-Germany        &    81{,}937 & 11{,}218 & 15{,}326 &  33{,}302 &  1{,}669 &  3{,}104 &  13{,}403 \\
-United Kingdom &    41{,}383 &  6{,}095 &  4{,}085 &   1{,}730 &  3{,}219 &  5{,}028 &  19{,}964 \\
-France         &    62{,}937 & 11{,}228 & 10{,}448 &  21{,}569 &  1{,}465 &  1{,}957 &   8{,}368 \\
+United States  &   980{,}998 & 77{,}598 & 87{,}443 & 274{,}701 & 28{,}373 & 47{,}953 & 66{,}673 & 338{,}738 & 17{,}002 \\
+Japan          &   775{,}826 & 23{,}780 & 55{,}011 & 539{,}643 & 15{,}540 &  5{,}561 &  9{,}718 &  27{,}163 &  1{,}141 \\
+Germany        &    81{,}937 & 11{,}218 & 15{,}326 &  33{,}302 &  3{,}587 &  1{,}669 &  3{,}104 &  13{,}403 &      210 \\
+United Kingdom &    41{,}383 &  6{,}095 &  4{,}085 &   1{,}730 &      445 &  3{,}219 &  5{,}028 &  19{,}964 &      591 \\
+France         &    62{,}937 & 11{,}228 & 10{,}448 &  21{,}569 &  3{,}753 &  1{,}465 &  1{,}957 &   8{,}368 &      162 \\
 \midrule
-Total          & 2{,}961{,}829 & 206{,}331 & 218{,}192 & 1{,}085{,}662 & 126{,}278 & 166{,}242 & 683{,}937 \\
+Total          & 2{,}961{,}829 & 206{,}331 & 218{,}192 & 1{,}085{,}662 & 133{,}562 & 126{,}278 & 166{,}242 & 683{,}937 & 25{,}743 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Granted invention patents filed 2000--2005 with a grant lag of up to ten years; individual
 owners excluded. Patents: all firms, universities and owners of unknown type. Firm size: inventions (DOCDB families)
-filed worldwide by the harmonised applicant in 2000--2005; small 1--9, mid-sized 10--99, large 100 or more. No Czech
-firm reaches 100. Universities and public research organisations hold 133{,}562 domestic and 25{,}743 foreign
-patents. Source: PATSTAT Global, autumn 2025.
+filed worldwide by the harmonised applicant in 2000--2005; small 1--9, mid-sized 10--99, large 100 or more; no Czech
+firm reaches 100. Univ.: universities and public research organisations. Source: PATSTAT Global, autumn 2025.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
