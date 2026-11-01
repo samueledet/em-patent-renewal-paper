@@ -1,57 +1,32 @@
 \section{Survival at equal quality}\label{sec:survival}
 
-\paragraph{Main estimates.} Table~\ref{tab:survival} reports the extra domestic gap in emerging-market offices,
-$\delta$ in equation~\eqref{eq:did}. Without quality controls it is $-10.1$ (1.5) points: domestic firms' patents in
-emerging-market offices are much less cited than foreign ones. With citation slopes, field and owner-group effects it
-becomes $+4.3$ (1.5). The estimate is the same for the original core of offices (China and Korea against the four
-largest advanced economies) and close to zero, $-0.5$ (1.9), when Korea and Taiwan, the two high-income members of
-the emerging-market group, are left out. By owner group (panel B), emerging-market firms of every size are ahead of
-advanced-economy firms relative to foreign owners in the same office: small firms by 1.7 (0.5) points and larger
-firms by 8--9 points. Universities are behind, at $-5.7$ (3.6), and by 16 points without Korea and Taiwan.
+\paragraph{Main estimates.} Table~\ref{tab:survival} reports $\delta$ in equation~\eqref{eq:did}, the extra
+domestic--foreign gap in emerging-market offices, for all firms and universities together. Across the ten offices,
+without quality controls it is $-10.1$ (1.5) points: domestic patents in emerging-market offices are much less cited
+than foreign ones (column 1). With office-specific citation slopes and field and owner-group effects it becomes $+4.1$
+(1.4) (column 2). Table~\ref{tab:groups} breaks the estimate down by owner. Emerging-market firms of every size are
+ahead of advanced-economy firms relative to foreign owners in the same office: small firms by 2.8 (0.5) points,
+mid-sized firms by 7.9 (1.0) and large firms by 9.0 (2.6). Universities are behind, at $-5.7$ (3.6).
+
+\paragraph{Which offices drive it.} China and the United States are the largest offices on each side, so
+columns 3--6 of Table~\ref{tab:survival} and panels B and C of Table~\ref{tab:groups} separate them. China against the
+United States alone gives the same pooled estimate, $+3.9$ (2.2), with Chinese small firms 5.4 (0.6) points ahead and
+Chinese universities 15.3 (3.2) points behind. Without China and the United States the pooled estimate is close to
+zero, $-1.0$ (1.5); mid-sized and large firms are still ahead, by 2.4 (1.4) and 3.5 (2.9) points, the second not
+significantly, but small firms in Korea, Russia, Taiwan
+and the Czech Republic are 4.4 (0.9) points behind small firms in Japan, Germany, the United Kingdom and France. The
+benchmark matters here: small Japanese firms keep their home patents 18 points more often than foreign owners do in
+Japan, by far the largest domestic advantage among the advanced-economy offices (Appendix Table~\ref{tab:within}), and
+without the United States Japan sets the bar.
+
+\input{tables/table2}
+\input{tables/table3}
 
 \paragraph{Richer quality controls.} Citations are a noisy measure of quality. Adding citations that block later
 claims, citations received by age four and office-specific slopes in the grant lag lowers the estimates for every
-firm size by 2--3 points (Appendix Table~\ref{tab:rich}). Small emerging-market firms then come out 1.6 (0.6) points
-behind, and 3.0 (0.7) with family size, which itself partly reflects owners' capacity to file abroad; larger firms
-remain 4--9 points ahead. Small firms thus keep their patents about as long as small firms in the advanced
-economies, within a few points either way, and larger firms longer.
-
-\begin{table}[t]
-\centering
-\begin{threeparttable}
-\caption{Extra domestic--foreign survival gap in emerging-market offices (percentage points)}\label{tab:survival}
-\small
-% Source: em-patent-value output/ext_overall.csv, ext_gradient.csv (23_extended_offices.py)
-\begin{tabular}{lccc}
-\toprule
- & All ten offices & Core six & Without Korea, Taiwan \\
- & (1) & (2) & (3) \\
-\midrule
-\multicolumn{4}{l}{\emph{A. All firms and universities}} \\
-No quality controls  & $-10.1$ (1.5) & $-11.5$ (1.7) & $-18.5$ (2.0) \\
-Quality controls     & \textbf{4.3} (1.5) & \textbf{4.3} (1.5) & $-0.5$ (1.9) \\
-\addlinespace
-\multicolumn{4}{l}{\emph{B. By owner group, quality controls}} \\
-Firms, 1--9 families     & 1.7 (0.5)    & 3.4 (0.6)    & 2.6 (0.6) \\
-Firms, 10--99            & 8.2 (0.9)    & 9.8 (1.0)    & 7.8 (1.2) \\
-Firms, 100--999          & 9.3 (1.7)    & 12.3 (2.0)   & 10.1 (2.8) \\
-Firms, 1{,}000+          & 9.3 (3.4)    & 6.6 (3.5)    & 4.8 (6.4) \\
-Universities             & $-5.7$ (3.6) & $-11.5$ (3.1) & $-16.3$ (3.0) \\
-\addlinespace
-Patents                  & 2{,}961{,}829 & 2{,}615{,}050 & 2{,}439{,}754 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Coefficient $\delta$ of equation~\eqref{eq:did}, outcome alive eight years after grant; standard
-errors clustered by owner in parentheses. No quality controls: office $\times$ filing-year effects only. Quality
-controls: office-specific citation slopes, office $\times$ field and (panel A) office $\times$ owner-group effects.
-Column (1): China, Korea, Russia, Taiwan and the Czech Republic against the United States, Japan, Germany, the United
-Kingdom and France. Column (2): China and Korea against the United States, Japan, Germany and the United Kingdom.
-Column (3): column (1) without Korea and Taiwan.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
+firm size by 2--3 points (Appendix Table~\ref{tab:rich}). Small emerging-market firms then come out level, at $-0.4$
+(0.6), and 1.7 (0.7) points behind with family size, which itself partly reflects owners' capacity to file abroad;
+mid-sized and large firms remain 4--8 points ahead.
 
 \begin{figure}[t]
 \centering
@@ -59,14 +34,14 @@ Column (3): column (1) without Korea and Taiwan.
 \caption{Each emerging-market office against the advanced-economy offices}\label{fig:country}
 \figurenotes{Coefficient $\delta$ of equation~\eqref{eq:did} estimated on one emerging-market office and the five
 advanced-economy offices, separately for each owner group, with 95\% confidence intervals (standard errors clustered
-by owner). Outcome: alive eight years after grant. The Czech Republic has too few domestic university patents (95).}
+by owner). Outcome: alive eight years after grant. The Czech Republic has no domestic firm with 100 or more inventions
+and too few domestic university patents (95).}
 \end{figure}
 
-
 \paragraph{By country.} Figure~\ref{fig:country} compares each emerging-market office with the five advanced-economy
-offices, by owner group. Chinese and Korean firms of every size are ahead: small firms by 4.0 (0.6) and 1.7 (1.1)
-points, larger firms by 8--12 points. Czech firms are ahead by similar amounts, though with wide intervals. Russia is
-the exception: small Russian firms are 5.9 (1.5) points behind, and Russian universities 11.9 (4.7). Small Taiwanese
-firms are 3.8 (1.5) points behind, while large Taiwanese firms and universities are well ahead. Even the Russian and
-Taiwanese shortfalls sit inside the range of domestic--foreign gaps among small firms in the advanced-economy
-offices, from about zero in the United Kingdom to 18 points in Japan (Appendix Table~\ref{tab:within}).
+offices, by owner group. Chinese and Korean firms of every size are ahead: small firms by 4.0 (0.6) and 5.1 (0.9)
+points, larger firms by 7--11 points. Small Czech firms are ahead by a similar amount, 6.4 points, though with a wide
+interval. Russia is the exception: small Russian firms are 4.3 (1.5) points behind, and Russian universities 11.9
+(4.7). Small Taiwanese firms are 2.4 (1.4) points behind, while large Taiwanese firms and universities are well ahead.
+Within each office, the domestic--foreign gap for small firms is close to zero in Russia and Taiwan, against 2--18
+points in the advanced-economy offices (Appendix Table~\ref{tab:within}).
