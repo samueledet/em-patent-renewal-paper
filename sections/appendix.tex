@@ -35,18 +35,17 @@ Ukraine,} \\
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Granted invention patents filed 2000--2010. Lapsed by 15 years: share of 2000--2005 filings whose
 first cessation event comes within 15 years of filing. Domestic grants use the raw first-applicant country and are
-understated where it is often missing. Inclusion in the analysis also requires at least 1{,}000 domestic firm patents
-and 200 from small firms in the 2000--2005 sample; the Czech Republic (909 and 524) is kept as a small Central European
-case, Brazil (164 and 98) and Hungary (299 and 180) are dropped. Ten advanced-economy offices pass the same tests; the
-five largest by domestic firm patents with full records are used.
+understated where it is often missing. Inclusion in the analysis also requires about 1{,}000 domestic firm patents
+in the 2000--2005 sample; the Czech Republic (909) is kept as a small Central European case, Brazil (164) and Hungary
+(299) are dropped. Ten advanced-economy offices pass the same tests; the five largest by domestic firm patents with
+full records are used.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \paragraph{Advanced-economy offices.} Ten advanced-economy offices have usable records (the United States, Japan,
 Germany, the United Kingdom, France, Canada, Australia, Spain, the Netherlands and Sweden). To match the five
-emerging-market offices I use the first five. The results with all ten are very close (pooled estimate 4.5 points
-(1.4) against 4.3 (1.5)).
+emerging-market offices I use the first five.
 
 \begin{figure}[ht]
 \centering
@@ -59,7 +58,10 @@ national examination begins. Source: em-patent-value output/sample\_lags.csv.}
 \end{figure}
 
 \paragraph{Owners and quality.} Owner identities are PATSTAT's harmonised applicant names (HAN). Sector comes from
-PATSTAT's sector allocation. Citation counts are citing DOCDB families. Blocking citations are citing applications
+PATSTAT's sector allocation. Firm size is the number of distinct DOCDB families in which the HAN appears as an
+applicant among invention-patent applications filed worldwide in 2000--2005. Applications with no recorded applicant
+have no HAN or sector and drop out of the owner-group estimates; they are common among domestic patents in Russia and
+foreign patents in Japan and Korea, where national records often omit applicants. Citation counts are citing DOCDB families. Blocking citations are citing applications
 whose search report marks the patent X or Y. Grant lag is measured to the first publication flagged as a grant.
 
 \section{Renewal models}\label{app:models}
@@ -119,10 +121,10 @@ fee in years 4--6 from March 2014 and 50\% in years 4 and later from April 2018.
  & CN & KR & RU & TW & CZ & US & JP & DE & GB & FR \\
 \midrule
 Free estimate of $d$        & 0.47\tnote{a} & 0.67\tnote{a} & -- & -- & -- & 0.47\tnote{a} & 0.73\tnote{a} & 0.851 & 0.840 & -- \\
-$\sigma_0$ at $d = 0.85$    & 1.12 & 1.34 & 7.39\tnote{a} & 2.24 & 1.99 & 2.63 & 3.07 & 1.52 & 1.81 & 1.74 \\
-Shock $s$                   & 0.99 & 0.62 & 1.39 & 1.19 & 1.16 & 0.34 & 1.05 & 1.02 & 1.05 & 1.16 \\
-Learning $\varphi$          & 0.95 & 0.99 & 0.94 & 0.98 & 0.74 & 0.99 & 0.98 & 0.86 & 0.85 & 0.89 \\
-Fit error (pp)              & 2.9 & 3.7 & 6.5 & 2.9 & 3.4 & 1.6 & 2.7 & 2.4 & 2.1 & 2.9 \\
+$\sigma_0$ at $d = 0.85$    & 1.13 & 1.35 & 7.39\tnote{a} & 2.14 & 1.92 & 2.64 & 2.91 & 1.53 & 1.89 & 1.74 \\
+Shock $s$                   & 0.99 & 0.64 & 1.39 & 1.06 & 1.21 & 0.34 & 0.99 & 1.01 & 1.03 & 1.16 \\
+Learning $\varphi$          & 0.95 & 0.99 & 0.94 & 0.99 & 0.72 & 0.99 & 0.99 & 0.86 & 0.83 & 0.89 \\
+Fit error (pp)              & 2.7 & 3.7 & 6.5 & 3.3 & 2.9 & 1.6 & 2.9 & 2.3 & 2.3 & 2.5 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
@@ -153,26 +155,66 @@ domestic firm with 100 or more inventions and too few domestic university patent
 \figurenotes{Point estimates with 95\% confidence intervals; circles: emerging economies, diamonds: advanced
 economies. Small firms: 1--9 inventions filed worldwide in 2000--2005. A--C: the small-firm estimates of
 Figure~\ref{fig:constraints} by country of origin (A) or office (B, C); A from one regression with origin-specific home
-effects. D: elasticity of the yearly lapse probability with respect to the fee for small firms and, as a placebo, firms
+effects. Credit-shock years (banking crises and documented credit crunches): 2008--09 in the advanced economies,
+Taiwan and the Czech Republic; 2003--04 and 2008--09 in Korea; 2013 and 2017--18 in China; 2008--09 and 2014--15 in
+Russia. D: elasticity of the yearly lapse probability with respect to the fee for small firms and, as a placebo, firms
 with 100 or more inventions, which are never eligible for discounts (China: intent to treat, 85\% discount window; US:
 stage-specific maintenance-fee changes); the Korean and French discounts are not identified (Table~\ref{tab:fees}).}
 \end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig4_value_ratios.png}
+\caption{Value of domestic relative to foreign owners' patents in the same office, by office}\label{fig:values}
+\figurenotes{Ratio of domestic to foreign owners' median patent value at grant, with citations at the office median,
+from the deterministic renewal model ($d=0.85$, discount factor 0.9, fees in 2024 PPP dollars). Filled circles:
+standard fees. Diamonds: every eligible domestic owner (firms with 1--99 inventions and universities) pays the
+discounted fee in China and Korea, a lower bound for domestic values. Open circles: Russia, where the model is not
+identified (Section~\ref{sec:values}). Log scale.}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Patent-level values, domestic minus foreign owners, by office (log points)}\label{tab:patentvalues}
+\small
+% Source: em-patent-value output/patent_value_gaps.csv, patent_value_gaps_RU_TW_CZ_FR.csv (21_patent_values.py)
+\begin{tabular}{lcc@{\hspace{2.5em}}lcc}
+\toprule
+Office & Small firms & Universities & Office & Small firms & Universities \\
+\midrule
+China          & 0.20 (0.03)    & $-0.83$ (0.07) & United States  & 0.23 (0.02)    & 0.13 (0.20) \\
+Korea          & 0.49 (0.06)    & 0.47 (0.19)    & Japan          & 1.22 (0.07)    & 2.07 (0.58) \\
+Russia\tnote{a} & $-0.20$ (0.63) & --            & Germany        & 0.20 (0.06)    & $-0.18$ (0.33) \\
+Taiwan         & $-0.07$ (0.08) & 1.75 (0.32)    & United Kingdom & 0.08 (0.06)    & $-0.59$ (0.15) \\
+Czech Republic & 0.07 (0.20)    & $-0.16$ (0.57) & France         & 0.00 (0.07)    & $-0.48$ (0.27) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Posterior median value at grant of each patent from the learning model with a common prior
+($d=0.85$; 2024 PPP dollars), regressed on domestic owner $\times$ owner group with fee-path $\times$ citation-band and
+office $\times$ field effects; standard errors clustered by owner. 1.42 million patents. Small firms: 1--9 inventions
+filed worldwide in 2000--2005. Japanese university estimates are unstable across specifications.
+\item[a] Not identified (Section~\ref{sec:values}); no foreign university patents in the Russian estimation sample.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
 \begin{table}[ht]
 \centering
 \begin{threeparttable}
 \caption{Domestic minus foreign owners within each office, alive 8 years after grant (pp)}\label{tab:within}
 \small
-% Source: em-patent-value output/ext_within_office.csv (23_extended_offices.py)
+% Source: em-patent-value output/ext_within_office.csv (23_extended_offices.py; size 2000-2005)
 \begin{tabular}{lcc@{\hspace{2.5em}}lcc}
 \toprule
 Office & Small firms & All firms & Office & Small firms & All firms \\
 \midrule
-China          & 6.9 (0.6)    & 11.3 (2.3) & United States  & 1.7 (0.3)    & 2.7 (1.2) \\
-Korea          & 4.6 (1.0)    & 13.7 (1.4) & Japan          & 17.8 (1.2)   & 17.5 (1.8) \\
-Russia         & $-3.0$ (1.5) & 0.9 (1.8)  & Germany        & 6.1 (1.6)    & 4.7 (1.7) \\
-Taiwan         & $-0.8$ (1.5) & 14.4 (3.2) & United Kingdom & $-0.1$ (1.4) & 2.1 (1.9) \\
-Czech Republic & 5.6 (5.0)    & 8.0 (3.2)  & France         & 2.7 (1.7)    & $-1.2$ (3.2) \\
+China          & 7.2 (0.5)    & 11.3 (2.3) & United States  & 1.8 (0.3)    & 2.6 (1.1) \\
+Korea          & 8.4 (0.9)    & 12.4 (1.5) & Japan          & 17.8 (1.1)   & 16.5 (1.8) \\
+Russia         & $-1.1$ (1.4) & 0.2 (1.8)  & Germany        & 6.1 (1.5)    & 4.9 (1.8) \\
+Taiwan         & 0.8 (1.3)    & 14.4 (3.2) & United Kingdom & 2.5 (1.3)    & 1.1 (2.0) \\
+Czech Republic & 9.6 (4.8)    & 7.3 (3.3)  & France         & 1.7 (1.7)    & $-1.3$ (2.9) \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
@@ -192,11 +234,10 @@ effects for all firms); standard errors clustered by owner.
 \toprule
 Owner group & Citations & + blocking, early citations, grant lag & + family size \\
 \midrule
-Firms, 1--9 families & 1.7 (0.5)    & $-1.6$ (0.6) & $-3.0$ (0.7) \\
-Firms, 10--99        & 8.2 (0.9)    & 5.7 (1.0)    & 4.0 (1.2) \\
-Firms, 100--999      & 9.3 (1.7)    & 7.5 (1.8)    & 5.0 (2.1) \\
-Firms, 1{,}000+      & 9.3 (3.4)    & 8.2 (3.5)    & 8.8 (3.7) \\
-Universities         & $-5.7$ (3.6) & $-5.6$ (3.8) & 9.6 (4.3) \\
+Small firms (1--9)      & 2.8 (0.5)    & $-0.4$ (0.6) & $-1.7$ (0.7) \\
+Mid-sized firms (10--99) & 7.9 (1.0)    & 5.7 (1.1)    & 4.0 (1.2) \\
+Large firms (100+)      & 9.0 (2.6)    & 7.9 (2.7)    & 7.8 (2.9) \\
+Universities            & $-5.7$ (3.6) & $-5.6$ (3.8) & 9.6 (4.3) \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
@@ -208,90 +249,35 @@ owner capacity.
 \end{table}
 
 \paragraph{Small against large domestic firms.} A comparison that involves no foreign owners matches domestic small
-firms' patents with domestic patents of firms with 100 or more families in exact cells of office $\times$ filing year
+firms' patents with domestic patents of firms with 100 or more inventions in exact cells of office $\times$ filing year
 $\times$ field $\times$ early-citation bin $\times$ blocking-citation bin $\times$ grant-lag bin. Small firms keep their
-patents 5.8 (0.7) points less often than large firms in the advanced-economy offices, and the extra shortfall in
-emerging-market offices is 2.7 (1.6) points, not significant at conventional levels: the shortfall is a small-firm
-effect, not an emerging-market one.
-
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Same invention: home minus abroad, small firms minus larger firms (pp)}\label{tab:same}
-\small
-% Source: em-patent-value output/ext_same_invention.csv (24_extended_checks.py)
-\begin{tabular}{lcc@{\hspace{2.5em}}lcc}
-\toprule
-Origin & Estimate & Families & Origin & Estimate & Families \\
-\midrule
-China          & 10.2 (3.8)  & 221 & United States  & 4.4 (1.3)  & 4{,}710 \\
-Korea          & 9.9 (2.0)   & 947 & Japan          & 14.9 (1.6) & 1{,}097 \\
-Russia         & 27.2 (16.7) & 40  & Germany        & 1.0 (2.4)  & 934 \\
-Taiwan         & 1.2 (4.2)   & 274 & United Kingdom & 3.6 (2.7)  & 835 \\
-Czech Republic & --          & 22  & France         & 6.6 (3.9)  & 1{,}187 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Inventions (DOCDB families) with granted patents at the owner's home office and at least one other
-study office; alive 8 years after grant on home $\times$ small-firm owner, with family and office $\times$ year fixed
-effects; standard errors clustered by owner. Families: inventions of small firms.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Credit shocks and sales}\label{tab:credit}
-\small
-% Source: em-patent-value output/ext_credit_shocks.csv, ext_sale_premium.csv (24_extended_checks.py)
-\begin{tabular}{lcc}
-\toprule
- & Emerging-market offices & Advanced-economy offices \\
-\midrule
-\multicolumn{3}{l}{\emph{A. Lapse rate in credit-shock years (pp per year)}} \\
-Shock $\times$ small $\times$ domestic & 0.37 (0.75) & 0.23 (0.52) \\
-\addlinespace
-\multicolumn{3}{l}{\emph{B. Survival five years after a sale (pp)}} \\
-Sale & \multicolumn{2}{c}{4.7 (0.7)} \\
-Sale $\times$ small domestic firm & 8.3 (1.0) & 0.8 (1.0) \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Panel A: cells of office $\times$ owner group $\times$ domestic $\times$ age since grant $\times$
-citation tercile $\times$ year, weighted by patents at risk, with office $\times$ year, office $\times$ age $\times$
-citation-tercile and office $\times$ owner group $\times$ domestic effects; standard errors clustered by office
-$\times$ year. Shock years: 2008--09 in the advanced economies, Taiwan and the Czech Republic; 2003--04 and 2008--09 in
-Korea; 2013 and 2017--18 in China; 2008--09 and 2014--15 in Russia. Panel B: landmark design at ages 4--8, citations up
-to the landmark age and grant lag controlled; transfers recorded in China, Korea, Russia, Japan, Germany, the United
-Kingdom and France. By office, the extra premium for small domestic sellers is 3.6 (1.1) in China and $-0.7$
-(4.0) in Russia. The Czech Republic has too few small-firm inventions patented abroad for the same-invention test.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+patents 3.9 (0.7) points less often than large firms in the advanced-economy offices, and in the emerging-market
+offices the difference is the same: the extra gap is 0.6 (1.7) points. The small-firm shortfall is a small-firm effect,
+not an emerging-market one.
 
 \begin{table}[ht]
 \centering
 \begin{threeparttable}
 \caption{Responses of small firms to fee changes}\label{tab:fees}
 \small
-% Source: em-patent-value output/fee_response.csv (17_fee_response.py, firms with 1-9 families)
+% Source: em-patent-value output/fee_response.csv (17_fee_response.py; size 2000-2005)
 \begin{tabular}{llcc}
 \toprule
 Office & Variation & Coefficient & Elasticity \\
 \midrule
-China & 85\% discount window extended (2016, 2018), intent to treat & 0.0034 (0.0006) & 0.07 \\
-Korea & 30\%/50\% discounts for years 4+ (2014, 2016, 2018) & $-0.063$ (0.033) & not identified \\
-United States & stage-specific fee changes (2004, 2013, 2020) & 0.039 (0.020) & 0.18 \\
-United States & 2022 small-entity discount (50\% to 60\%) & 0.045 (0.028) & -- \\
-France & SME reductions for years 2--7 (2005, 2008), intent to treat & $-0.095$ (0.040) & not identified \\
+China & 85\% discount window extended (2016, 2018), intent to treat & 0.0017 (0.0004) & 0.05 \\
+Korea & 30\%/50\% discounts for years 4+ (2014, 2016, 2018) & $-0.033$ (0.027) & not identified \\
+United States & stage-specific fee changes (2004, 2013, 2020) & 0.047 (0.019) & 0.26 \\
+\quad placebo: firms with 100+ inventions & stage-specific fee changes & 0.009 (0.048) & 0.05 \\
+United States & 2022 small-entity discount (50\% to 60\%) & 0.023 (0.024) & -- \\
+France & SME reductions for years 2--7 (2005, 2008), intent to treat & $-0.083$ (0.027) & not identified \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item \emph{Notes:} Panel of renewal decisions of firms with 1--9 families; outcome: the patent lapses at that payment.
-Regressor: log of the fee or fee multiplier the owner faces; controls are firms with 1{,}000+ families, which are never
-eligible. Korean lapse records end in 2019, so only the 2014--2018 windows identify the Korean discounts. The French
-estimate has the wrong sign and keeps it with small-firm $\times$ filing-cohort effects ($-0.113$, 0.048); it is not
+\item \emph{Notes:} Panel of renewal decisions of small firms (1--9 inventions filed worldwide in 2000--2005); outcome:
+the patent lapses at that payment. Regressor: log of the fee or fee multiplier the owner faces; controls are firms with
+100 or more inventions, which are not eligible. Korean lapse records end in 2019, so only the 2014--2018 windows identify the Korean discounts. The French
+estimate has the wrong sign and keeps it with small-firm $\times$ filing-cohort effects ($-0.100$, 0.033); it is not
 read as an elasticity. Eligibility in France depends on employment (under 250, then 1{,}000 employees), which patent
 counts measure only roughly.
 \end{tablenotes}

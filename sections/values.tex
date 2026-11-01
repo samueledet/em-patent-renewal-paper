@@ -14,78 +14,59 @@ and owners may keep a patent worth less than its fee for the option of later ren
 year the decay rate is identified: 0.851 in Germany and 0.840 in the United Kingdom, close to the 0.85 commonly
 assumed. I fix $d = 0.85$ everywhere. Appendix~\ref{app:models} gives the details.
 
-\paragraph{The home premium is no smaller in most emerging markets.} Domestic owners value their patents more than
-foreign owners in the same office, as they should: the home market is where they sell. The question is whether that
-home premium is smaller in emerging markets. Figure~\ref{fig:values} shows that for China, Korea and the Czech
-Republic it is not. At equal citations, the median small domestic firm's patent is worth 1.9 times the median small
-foreign firm's in China, 2.0 times in Korea and 1.8 times in the Czech Republic, against 0.9--3.9 in the
-advanced-economy offices. Small Taiwanese firms sit at the bottom of that range, at 0.9, while larger Taiwanese firms
-and universities are well above it. Chinese universities are the exception, at 0.4. The Russian estimates are not
-identified: domestic owners paid very low fees, about \$50--150 a year in PPP terms, but let many patents lapse,
-while foreign owners paid four and a half times the resident fee until 2012 and kept theirs. Read literally, the model
-values foreign-owned Russian patents at eight times domestic ones, with an implausibly wide spread of initial values in
-the learning model. Russian patents that lapse despite near-zero fees point to low value or to lapses unrelated to the
-fee, and the model cannot separate the two.
+\paragraph{Patent-level values.} Group averages could hide the patents that matter, and they depend on how owners are
+grouped. I therefore value each patent from its own renewal history: the learning model is re-estimated with a single
+prior for all owners, in which only citations enter, and each patent's value is the posterior median over simulated
+return paths, weighting each path by the probability of the patent's observed lapse or survival. Owner type plays no
+role in a patent's value. Figure~\ref{fig:valuespooled} regresses log value on domestic ownership, for each owner
+group, with fee-path $\times$ citation-band and office $\times$ field effects: the home premium, the value of domestic
+relative to foreign owners' patents with the same fees, citations and technology.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/fig4_value_ratios.png}
-\caption{Value of domestic relative to foreign owners' patents in the same office}\label{fig:values}
-\figurenotes{Ratio of domestic to foreign owners' median patent value at grant, with citations at the office median,
-from the deterministic renewal model ($d=0.85$, discount factor 0.9, fees in 2024 PPP dollars). Filled circles:
-standard fees. Diamonds: every eligible domestic owner (firms with 1--99 families and universities) pays the
-discounted fee in China and Korea, a lower bound for domestic values. Open circles: Russia, where the model is not
-identified (see text). Log scale.}
+\includegraphics[width=\textwidth]{figures/fig7_values_pooled.png}
+\caption{Value of domestic relative to foreign owners' patents, by owner group}\label{fig:valuespooled}
+\figurenotes{Point estimates with 95\% confidence intervals, in log points $\times$ 100 (approximately percent).
+Squares: all offices; circles: emerging-market offices (China, Korea, Taiwan, Czech Republic); diamonds:
+advanced-economy offices; open diamonds: emerging minus advanced, estimated as an interaction in one regression.
+Patent-level values: posterior median value at grant from the learning model with a common prior ($d = 0.85$, 2024
+PPP dollars). Regressions of log value on domestic owner with fee-path $\times$ citation-band and office $\times$ field
+effects (and office $\times$ owner-group effects for all owners); standard errors clustered by owner. Russia is left
+out because its values are not identified. Firm size: inventions filed worldwide in 2000--2005 (small 1--9, mid-sized
+10--99, large 100 or more). 1.37 million patents.}
 \end{figure}
+
+\paragraph{The home premium.} Domestic owners value their patents more than foreign owners in the same office, as
+they should: the home market is where they sell. Across all owners the premium is the same in the two groups of
+offices, 43 (7) log points in the emerging-market offices and 42 (4) in the advanced ones. Mid-sized and large firms
+show no difference either. Small firms do: their home premium is 17 (2) log points in the emerging-market offices and
+32 (2) in the advanced ones, a difference of $-15$ (3). As in Section~\ref{sec:survival}, the benchmark matters. Small
+Japanese firms value their home patents far above foreign owners do in Japan (122 log points), and Japan contributes a
+large share of the advanced-economy patents. Office by office, the premium of small firms is 20 log points in China and
+49 in Korea, against 23 in the United States, 20 in Germany and 8 in the United Kingdom; it is close to zero in Taiwan,
+the Czech Republic and France (Appendix Table~\ref{tab:patentvalues}). Universities are the exception among
+emerging-market owners: Chinese universities' patents are worth 56\% less than foreign universities' in China
+($1-e^{-0.83}$). The deterministic model gives the same pattern in ratios of median values (Appendix
+Figure~\ref{fig:values}).
+
+\paragraph{Russia.} The Russian estimates are not identified. Domestic owners paid very low fees, about \$50--150 a
+year in PPP terms, but let many patents lapse, while foreign owners paid four and a half times the resident fee until
+2012 and kept theirs. Read literally, the model values foreign-owned Russian patents at eight times domestic ones, with
+an implausibly wide spread of initial values in the learning model. Russian patents that lapse despite near-zero fees
+point to low value or to lapses unrelated to the fee, and the model cannot separate the two.
 
 \paragraph{Fee discounts do not explain it.} China and Korea cut renewal fees for domestic small firms and
 universities, and the models above assume standard fees. Lower fees mean the same renewal behaviour implies lower
 values, so I re-estimate both models assuming that every eligible owner took the discount: in China, 30\% of the fee
 in the first three fee-years after grant until 2016 and 15\% for up to ten years from 2018; in Korea, 70\% of the fee
-in years 4--6 from 2014 and half from 2018. Values fall by a few percent (Figure~\ref{fig:values}): the ratio for
-small firms is 1.85 in China and 1.91 in Korea in the deterministic model, and 1.61 and 1.51 in the learning model.
-The discounts apply when fees are low, about \$250--350 a year in China, against values in the tens of thousands.
+in years 4--6 from 2014 and half from 2018. Values fall by a few percent (Appendix Figure~\ref{fig:values}): the ratio
+of small domestic to small foreign firms' median value is 1.88 in China and 2.41 in Korea in the deterministic model,
+and 1.66 and 1.97 in the learning model. The discounts apply when fees are low, about \$250--350 a year in China,
+against values in the tens of thousands.
 
-\paragraph{Patent-level values.} Group means could hide the patents that matter. I therefore value each patent from
-its own renewal history: the learning model is re-estimated with a single prior for all owners, in which only
-citations enter, and each patent's value is the posterior median over simulated return paths, weighting each path by
-the probability of the patent's observed lapse or survival. Owner type plays no role in a patent's value. Regressing
-log value on domestic owner by size, with fee-path $\times$ citation-band and office $\times$ field effects,
-Table~\ref{tab:patentvalues} shows that small domestic firms' patents are worth about 20\% more than small foreign
-firms' in China and 30\% more in Korea, as in the United States and Germany, and the same in the Czech Republic and
-France. In Taiwan they are worth 18\% less. Chinese universities' patents are worth 58\% less than foreign
-universities' ($1-e^{-0.87}$).
-
-\begin{table}[t]
-\centering
-\begin{threeparttable}
-\caption{Patent-level values, domestic minus foreign owners (log points)}\label{tab:patentvalues}
-\small
-% Source: em-patent-value output/patent_value_gaps.csv, patent_value_gaps_RU_TW_CZ_FR.csv (21_patent_values.py)
-\begin{tabular}{lcc@{\hspace{2.5em}}lcc}
-\toprule
-Office & Small firms & Universities & Office & Small firms & Universities \\
-\midrule
-China          & 0.20 (0.03)    & $-0.87$ (0.07) & United States  & 0.22 (0.02)    & 0.13 (0.20) \\
-Korea          & 0.26 (0.06)    & 0.44 (0.19)    & Japan          & 1.11 (0.07)    & 1.94 (0.55) \\
-Russia\tnote{a} & $-0.45$ (0.64) & --            & Germany        & 0.21 (0.06)    & $-0.19$ (0.33) \\
-Taiwan         & $-0.20$ (0.09) & 1.77 (0.32)    & United Kingdom & $-0.05$ (0.06) & $-0.59$ (0.15) \\
-Czech Republic & 0.07 (0.21)    & $-0.20$ (0.57) & France         & 0.00 (0.08)    & $-0.48$ (0.27) \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Posterior median value at grant of each patent from the learning model with a common prior
-($d=0.85$; 2024 PPP dollars), regressed on domestic owner $\times$ owner group with fee-path $\times$ citation-band and
-office $\times$ field effects; standard errors clustered by owner. 1.37 million patents. Japanese university estimates
-are unstable across specifications.
-\item[a] Not identified (see text); no foreign university patents in the Russian estimation sample.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\paragraph{Levels are rough; ratios are not.} A typical small domestic firm's patent is worth roughly
-\$5{,}000--60{,}000 at grant in the deterministic model and several times more in the learning model, in which early
+\paragraph{Levels are rough; comparisons are not.} A typical small domestic firm's patent is worth roughly
+\$5{,}000--65{,}000 at grant in the deterministic model and several times more in the learning model, in which early
 lapses reflect learning rather than low initial value. Values in different offices also cover protection in
-different markets. The ratios, on which the argument rests, are stable across models, decay rates and fee
-assumptions, except in Russia. Because a patent's value on a given fee path rises with how long it is kept, the
-patent-level values restate the survival results in money rather than adding an independent test.
+different markets. The comparisons between owners, on which the argument rests, are stable across models, decay rates
+and fee assumptions, except in Russia. Because a patent's value on a given fee path rises with how long it is kept,
+the patent-level values restate the survival results in money rather than adding an independent test.
