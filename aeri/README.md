@@ -1,8 +1,10 @@
 # AER: Insights submission
 
-Sources for the AER: Insights version of the paper. The working paper (`main.tex`, `sections/`) is unchanged; the
-submission sections in `aeri/sections/` are generated from it by `python aeri/build_aeri.py` (run from the repository
-root). Edit `sections/`, then rerun the script; do not edit `aeri/sections/` by hand.
+Sources for the AER: Insights version of the paper. Edit the `aeri_*.tex` files and `aeri/sections/` directly and
+compile. They are a separate copy of the working paper (`main.tex`, `sections/`), so edits to either one do not carry
+over to the other. The manuscript cites the Supplemental Appendix by fixed numbers (Table S2, Figure S3, ...); if you
+add, drop or reorder exhibits in `aeri/sections/supplement_body.tex`, update those citations, and update the cross-
+references to the paper (Table 1, footnote 3, equation (1), ...) inside the supplement.
 
 Compile each file below as the main document (in Overleaf: Menu > Main document) and download the PDF.
 
