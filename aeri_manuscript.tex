@@ -1,0 +1,83 @@
+% AER: Insights submission: anonymised manuscript.
+% Sections are generated from sections/ by aeri/build_aeri.py; edit the working paper, then rerun the script.
+% aeri_wordcount.tex compiles this file without title, abstract, exhibits and references (for the AEA word-count tool).
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage[section]{placeins}                        % floats stay in their own section
+\renewcommand{\topfraction}{0.9}\renewcommand{\textfraction}{0.07}\renewcommand{\floatpagefraction}{0.75}
+\usepackage[authoryear,round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+\onehalfspacing
+
+\captionsetup{font=small, labelfont=bf, skip=4pt}
+\newcommand{\figurenotes}[1]{\par\vspace{2pt}{\footnotesize\leftskip=0pt\rightskip=0pt\parfillskip=0pt plus 1fil\noindent\emph{Notes:} #1\par}}
+
+\ifdefined\aeriwordcount
+  \makeatletter                                       % exhibits typeset into a discarded box: not counted
+  \AtBeginDocument{%
+    \renewenvironment{table}[1][]{\def\@captype{table}\setbox0=\vbox\bgroup}{\egroup}%
+    \renewenvironment{figure}[1][]{\def\@captype{figure}\setbox0=\vbox\bgroup}{\egroup}}
+  \makeatother
+  \usepackage{bibentry}                             % citations resolve, reference list not printed
+\else
+  \AtBeginEnvironment{table}{\singlespacing}\AtBeginEnvironment{figure}{\singlespacing}
+\fi
+
+\begin{document}
+
+\ifdefined\aeriwordcount\else
+\begin{center}
+{\Large\textbf{The Invention, Not the Inventor:\\Owner Constraints and Patent Value in Emerging Markets}}
+\end{center}
+
+\begin{abstract}
+\noindent Are emerging-market patents worth less because the inventions are weaker or because their owners cannot
+use them? Using renewal records for 3 million patents filed in 2000--2005 in five emerging and five advanced
+economies, I compare domestic and foreign owners within each office. At equal citations and field, emerging-market
+firms keep their patents as long as comparable firms in rich economies. Owners keep home patents longer than the
+same inventions' foreign patents, and credit crunches do not raise lapses. Patents sold by small firms and Chinese
+universities survive far longer after sale: markets for technology, not fee relief, matter.
+
+\medskip
+\noindent\textbf{JEL codes:} O34, O31, O32, O57, L26\\
+\noindent\textbf{Keywords:} patent renewal; patent value; emerging markets; markets for technology
+\end{abstract}
+\fi
+
+\input{aeri/sections/introduction}
+\input{aeri/sections/data}
+\input{aeri/sections/survival}
+\input{aeri/sections/constraints}
+\input{aeri/sections/values}
+\input{aeri/sections/stake}
+\input{aeri/sections/conclusion}
+
+% In-paper appendix: starts on a new page after the text and before the references (counts toward the word limit)
+\clearpage
+\appendix
+\input{aeri/sections/appendix_models}
+
+\bibliographystyle{plainnat}
+\ifdefined\aeriwordcount
+\nobibliography{references}
+\else
+\clearpage
+\bibliography{references}
+\fi
+
+\end{document}

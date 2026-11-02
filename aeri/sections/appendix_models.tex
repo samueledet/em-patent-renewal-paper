@@ -1,0 +1,31 @@
+\section{Renewal models}\label{app:models}
+
+Fee schedules, the fee discounts and the estimates are in Supplemental Appendix~S4.
+
+\paragraph{Deterministic model.} A patent earns $r_0 d^t$ in year $t$ after grant. At decision $j$, at time $t_j$,
+the owner pays $c_j$ to keep the patent for $L_j$ years and renews if
+$r_0 d^{t_j} \sum_{s<L_j} (\beta d)^s \ge c_j$, i.e.\ if $r_0 \ge \tau_j$. With returns falling and fees rising
+this rule is optimal, and a patent survives decision $j$ if $r_0 \ge \max_{l\le j}\tau_l$. In addition, at each
+decision the owner drops the patent with probability $h = 1\%$ for reasons unrelated to value. With
+$\ln r_0 \sim N(\alpha_g + \gamma \ln(1+c), \sigma)$, the likelihood of each patent's lapse or censoring decision
+follows directly. The discount factor is $\beta = 0.9$. Estimation is by maximum likelihood, office by office, on up
+to 60{,}000 patents per owner group.
+
+\paragraph{Learning model.} Log returns $x_t$ start at $x_0 \sim N(\mu_i, \sigma_0)$ and evolve as
+$x_{t+\Delta} = x_t + \Delta \ln d + e$, with $e \sim N\big(0,\, s^2(\varphi^{2t}-\varphi^{2(t+\Delta)})/(-2\ln\varphi)\big)$:
+a random walk with drift whose shocks shrink at rate $\varphi$ as the owner learns. The value of a patent at decision
+$j$ solves
+\[
+V_j(x) = \max\Big\{0,\; e^x \sum_{u<L_j} (\beta d)^u - c_j + \beta^{t_{j+1}-t_j} (1-h)\, E\,V_{j+1}(x')\Big\},
+\]
+so a patent may be kept below its current fee for the option of later renewals. Thresholds come from backward
+induction on a grid for each fee path, run to expiry. Expectations use Gauss--Hermite quadrature. Survival is
+simulated with common random numbers and a smoothed renewal indicator, and the likelihood is built from lapse and
+censoring counts in cells of fee path $\times$ owner group $\times$ citation band. Supplemental Appendix
+Table~S5 reports the estimates.
+
+\paragraph{Patent-level values.} For the values of Section~\ref{sec:values}, the learning model is re-estimated with a single prior for all owners
+($\mu_i$ depends on the citation band only). For each cell, 1{,}000 return paths are simulated; a patent that lapsed at
+decision $k$ weights each path by the probability of surviving to $k-1$ and lapsing at $k$, and a patent still alive
+at the end of the data by the probability of surviving all observed decisions, plus the value of optimal renewals
+after the data end. A patent's value is the weighted median over paths.

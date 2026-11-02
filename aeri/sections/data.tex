@@ -1,0 +1,89 @@
+\section{Data and design}\label{sec:data}
+
+\paragraph{Patents and lapses.} The data are PATSTAT Global \citep[autumn 2025 edition;][]{PATSTAT}. The sample is
+granted invention patents filed in 2000--2005 at ten national offices, followed for close to twenty years. A patent
+lapses if the INPADOC legal-event table records its first cessation within 19.5 years of filing; a later cessation
+marks expiry at full term. I chose the offices by scanning every authority in the legal-event table for the share of
+grants with a recorded cessation and the continuity of records over time (Supplemental Appendix~S1). The
+emerging-market offices are those of China, Korea, Russia, Taiwan and the Czech Republic; the advanced-economy
+offices are those of the United States, Japan, Germany, the United Kingdom and France.
+
+\paragraph{Owners.} An owner is domestic if the first applicant is from the office's country. Missing applicant
+countries (common in China and Japan) are imputed from the patent family and the office of first filing. Owners are
+grouped by sector and size. Size is the number of distinct inventions (DOCDB families) the harmonised applicant filed
+worldwide in 2000--2005, the cohort's own filing window, so that it is measured before the outcomes: small firms have
+1--9 inventions, mid-sized firms 10--99 and large firms 100 or more; universities and public research organisations
+form a fourth group. Individual inventors are excluded: their patents behave differently, and in China they were the
+main target of local filing subsidies in this period. Patents granted more than ten years after filing are dropped.
+Table~\ref{tab:sample} describes the sample. It covers 194{,}518 small firms, 28{,}657 mid-sized firms,
+4{,}487 large firms and 17{,}151 universities and public research organisations; panel B breaks them down by office
+group.
+
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{The sample: granted patents filed 2000--2005, firms and universities}\label{tab:sample}
+\small
+% Source: em-patent-value output/sample_counts.csv (29_sample_tables.py)
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & & \multicolumn{4}{c}{Domestic owners} & \multicolumn{4}{c}{Foreign owners} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-10}
+ & & \multicolumn{3}{c}{Firms} & & \multicolumn{3}{c}{Firms} & \\
+\cmidrule(lr){3-5}\cmidrule(lr){7-9}
+Office & Patents & Small & Mid & Large & Univ. & Small & Mid & Large & Univ. \\
+\midrule
+\multicolumn{10}{l}{\emph{A. Patents, by office}} \\
+China          &   363{,}574 & 26{,}155 & 12{,}411 &  27{,}983 & 39{,}836 & 41{,}845 & 40{,}870 & 143{,}289 &  3{,}982 \\
+Korea          &   371{,}332 & 33{,}505 & 21{,}556 & 157{,}473 & 19{,}530 &  8{,}283 & 16{,}088 &  50{,}457 &  1{,}248 \\
+Russia         &   129{,}038 & 10{,}130 &  3{,}397 &       841 & 15{,}738 &  8{,}202 &  6{,}144 &   4{,}993 &      467 \\
+Taiwan         &   150{,}743 &  6{,}038 &  8{,}190 &  28{,}420 &  6{,}665 &  7{,}510 & 15{,}834 &  76{,}313 &      916 \\
+Czech Rep.     &     4{,}061 &      584 &      325 &        -- &       95 &      571 &      826 &   1{,}249 &       24 \\
+\addlinespace
+United States  &   980{,}998 & 77{,}598 & 87{,}443 & 274{,}701 & 28{,}373 & 47{,}953 & 66{,}673 & 338{,}738 & 17{,}002 \\
+Japan          &   775{,}826 & 23{,}780 & 55{,}011 & 539{,}643 & 15{,}540 &  5{,}561 &  9{,}718 &  27{,}163 &  1{,}141 \\
+Germany        &    81{,}937 & 11{,}218 & 15{,}326 &  33{,}302 &  3{,}587 &  1{,}669 &  3{,}104 &  13{,}403 &      210 \\
+United Kingdom &    41{,}383 &  6{,}095 &  4{,}085 &   1{,}730 &      445 &  3{,}219 &  5{,}028 &  19{,}964 &      591 \\
+France         &    62{,}937 & 11{,}228 & 10{,}448 &  21{,}569 &  3{,}753 &  1{,}465 &  1{,}957 &   8{,}368 &      162 \\
+\midrule
+Total          & 2{,}961{,}829 & 206{,}331 & 218{,}192 & 1{,}085{,}662 & 133{,}562 & 126{,}278 & 166{,}242 & 683{,}937 & 25{,}743 \\
+\midrule
+\multicolumn{10}{l}{\emph{B. Owners, by office group}} \\
+% Source: em-patent-value output/owner_counts.csv (29b_owner_counts.py)
+Emerging       &   & 47{,}837 &  3{,}560 &     472 & 10{,}766 & 43{,}847 & 10{,}500 &   2{,}511 &  2{,}415 \\
+Advanced       &   & 75{,}448 & 15{,}703 &   2{,}913 &  2{,}648 & 39{,}775 & 10{,}665 &   2{,}261 &  2{,}551 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Granted invention patents filed 2000--2005 with a grant lag of up to ten years; individual
+owners excluded. Patents: all firms, universities and owners of unknown type. Firm size: inventions (DOCDB families)
+filed worldwide by the harmonised applicant in 2000--2005; small 1--9, mid-sized 10--99, large 100 or more; no Czech
+firm reaches 100. Univ.: universities and public research organisations. Panel B: distinct harmonised applicants with at
+least one sample patent in the five offices of the group, each counted once; a firm from one emerging economy
+patenting in another counts as domestic at home and foreign there. Source: PATSTAT Global, autumn 2025.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+
+
+\paragraph{Quality.} Observable quality is measured by forward citations to the patent family (logged), citations
+in search reports that block later claims (categories X and Y), citations received by age four, family size and the
+WIPO technology field (35 fields). Domestic patents in emerging-market offices are cited far less than foreign ones,
+by a factor of five in China and six in Korea, so quality controls matter.
+
+\paragraph{Design.} The basic comparison is between domestic and foreign owners in the same office, which holds
+fees, law and enforcement fixed. Foreign owners are mostly multinationals protecting a foreign market, so domestic
+and foreign patents differ everywhere; the question is whether the domestic shortfall is larger in emerging-market
+offices. For patent $i$ of owner group $g$ in office $o$, filed in year $t$ in field $f$,
+\begin{equation}\label{eq:did}
+  y_{i} = \beta\, D_i + \delta\, D_i \times EM_o + \theta_o \ln(1+c_i) + \mu_{ot} + \lambda_{of} + \kappa_{og}
+  + \varepsilon_i ,
+\end{equation}
+where $y_i$ indicates that the patent is alive eight years after grant,\footnote{Survival is measured from
+grant because renewal fees are due from grant. Grant lags differ across offices and between domestic and foreign
+owners in the same office (Supplemental Appendix Figure~S1), so a fixed age from filing would
+compare patents that have faced different numbers of renewal decisions.} $D_i$ marks a domestic owner, $EM_o$ an
+emerging-market office and $c_i$ citations. The coefficient of interest, $\delta$, is the extra domestic--foreign gap
+in emerging-market offices, in percentage points. Standard errors are clustered by owner.
