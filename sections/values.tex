@@ -10,14 +10,15 @@ after grant, with $\ln r_0 \sim N(\alpha_g + \gamma \ln(1+c), \sigma)$ for owner
 $\times$ firm size or university). With returns falling and fees rising, the owner renews while returns over the
 period a fee covers exceed the fee. In this model the rate of decline $1-d$ is not identified, so I also estimate the
 learning model of \citet{Pakes1986}, in which log returns follow a random walk whose shocks shrink as owners learn,
-and owners may keep a patent worth less than its fee for the option of later renewals. Where fees rise steeply every year the decay rate is identified: 0.851 in Germany, 0.840 in the United Kingdom
+and owners may keep a patent worth less than its fee for the option of later renewals. Where fees rise steeply every year $d$ is identified: 0.851 in Germany, 0.840 in the United Kingdom
 and 0.834 in France, close to the 0.85 commonly assumed. Taiwan, whose fees rise in three-year steps, gives a slower
 decline (0.93); elsewhere the rate is not identified. I fix $d = 0.85$ everywhere. Appendix~\ref{app:models} gives the details.
 
 \paragraph{Patent-level values.} Group averages could hide the patents that matter, and they depend on how owners are
-grouped. I therefore value each patent from its own renewal history: the learning model is re-estimated with a single
-prior for all owners, in which only citations enter, and each patent's value is the posterior median over simulated
-return paths, weighting each path by the probability of the patent's observed lapse or survival. Owner type plays no
+grouped. I therefore value each patent from its own renewal history: the learning model is re-estimated with the same
+starting distribution of returns for all owners, which depends only on citations, and each patent's value is the
+median over simulated return paths, weighting each path by how likely it makes the patent's observed lapse or
+survival. Owner type plays no
 role in a patent's value. Figure~\ref{fig:valuespooled} compares, for each owner group, the values of domestic and
 foreign owners' patents on the same fee path, in the same citation band and in the same field of the same office.\footnote{\label{fn:valuespecs}Each patent's posterior median value at grant from the learning model with a common prior ($d=0.85$; 2024 PPP dollars), regressed on domestic owner $\times$ owner group with fee-path $\times$ citation-band, office $\times$ field and office $\times$ owner-group effects; standard errors clustered by owner; 1.37 million patents. The emerging-minus-advanced difference is an interaction in one regression.}
 This is the home premium.
@@ -53,7 +54,7 @@ point to low value or to lapses unrelated to the fee, and the model cannot separ
 \paragraph{Fee discounts do not change the comparison.} China and Korea cut renewal fees for domestic small firms and
 universities, and the models above assume standard fees. Lower fees mean the same renewal behaviour implies lower
 values, so I re-estimate both models assuming that every eligible owner took the discount: in China, 30\% of the fee
-in the first three fee-years after grant until 2016 and 15\% for up to ten years from 2018; in Korea, 70\% of the fee
+in the first three fee-years after grant until 2016, then 15\% for six fee-years and, from 2018, for ten; in Korea, 70\% of the fee
 in years 4--6 from 2014 and half from 2018. Values fall by a few percent: the ratio
 of small domestic to small foreign firms' median value is 1.88 in China and 2.41 in Korea in the deterministic model,
 and 1.66 and 1.97 in the learning model. The discounts apply when fees are low, about \$250--350 a year in China,
