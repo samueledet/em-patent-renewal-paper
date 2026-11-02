@@ -71,21 +71,41 @@ whose search report marks the patent X or Y. Grant lag is measured to the first 
 \begin{threeparttable}
 \caption{Domestic minus foreign owners within each office, alive 8 years after grant (pp)}\label{tab:within}
 \small
-% Source: em-patent-value output/ext_within_office.csv (23_extended_offices.py; size 2000-2005)
-\begin{tabular}{lcc@{\hspace{2.5em}}lcc}
+% Source: em-patent-value output/ext_within_office_groups.csv (23b_within_office_groups.py; size 2000-2005)
+\begin{tabular}{lccccc}
 \toprule
-Office & Small firms & All firms & Office & Small firms & All firms \\
+ & All owners & Small firms & Mid-sized firms & Large firms & Universities \\
+ & & (1--9) & (10--99) & (100+) & \\
 \midrule
-China          & 7.2 (0.5)    & 11.3 (2.3) & United States  & 1.8 (0.3)    & 2.6 (1.1) \\
-Korea          & 8.4 (0.9)    & 12.4 (1.5) & Japan          & 17.8 (1.1)   & 16.5 (1.8) \\
-Russia         & $-1.1$ (1.4) & 0.2 (1.8)  & Germany        & 6.1 (1.5)    & 4.9 (1.8) \\
-Taiwan         & 0.8 (1.3)    & 14.4 (3.2) & United Kingdom & 2.5 (1.3)    & 1.1 (2.0) \\
-Czech Republic & 9.6 (4.8)    & 7.3 (3.3)  & France         & 1.7 (1.7)    & $-1.3$ (2.9) \\
+\multicolumn{6}{l}{\emph{A. Emerging-market offices}} \\
+China          & 9.0 & 7.2 & 13.6 & 12.7 & $-13.5$ \\
+               & (2.1) & (0.5) & (1.4) & (4.5) & (2.0) \\
+Korea          & 12.2 & 8.3 & 16.7 & 11.7 & 8.4 \\
+               & (1.5) & (0.9) & (1.4) & (2.2) & (4.4) \\
+Russia         & $-4.2$ & $-1.1$ & 4.1 & $-4.1$ & $-8.5$ \\
+               & (1.8) & (1.4) & (4.1) & (8.3) & (4.0) \\
+Taiwan         & 15.0 & 0.8 & 9.4 & 17.6 & 36.6 \\
+               & (3.1) & (1.3) & (1.9) & (4.4) & (3.5) \\
+Czech Republic & 7.7 & 9.6 & 4.2 & -- & -- \\
+               & (3.2) & (4.8) & (5.5) &  &  \\
+\addlinespace
+\multicolumn{6}{l}{\emph{B. Advanced-economy offices}} \\
+United States  & 2.6 & 1.8 & 3.4 & 2.7 & 1.7 \\
+               & (1.1) & (0.3) & (0.4) & (1.6) & (2.6) \\
+Japan          & 16.7 & 17.8 & 20.8 & 14.8 & 26.0 \\
+               & (1.8) & (1.1) & (1.3) & (2.5) & (6.5) \\
+Germany        & 5.0 & 6.1 & 1.6 & 5.7 & 5.1 \\
+               & (1.8) & (1.5) & (1.8) & (2.5) & (9.1) \\
+United Kingdom & 0.4 & 2.5 & $-0.1$ & 2.4 & $-13.9$ \\
+               & (1.9) & (1.3) & (2.2) & (6.3) & (3.7) \\
+France         & $-1.1$ & 1.7 & $-0.6$ & $-1.4$ & 1.2 \\
+               & (2.8) & (1.7) & (2.2) & (4.3) & (6.7) \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item \emph{Notes:} Domestic minus foreign owners, with log citations, filing-year and field effects (and owner-group
-effects for all firms); standard errors clustered by owner.
+\item \emph{Notes:} Domestic minus foreign owners, one regression per office and owner group, with log citations,
+filing-year and field effects (and owner-group effects for all owners); standard errors clustered by owner in
+parentheses. --: fewer than 100 domestic or foreign patents (no Czech firm has 100 or more inventions).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -265,6 +285,44 @@ Czech Republic & 0.07 (0.20)    & $-0.16$ (0.57) & France         & 0.00 (0.07) 
 office $\times$ field effects; standard errors clustered by owner. 1.42 million patents. Small firms: 1--9 inventions
 filed worldwide in 2000--2005. Japanese university estimates are unstable across specifications.
 \item[a] Not identified (Section~\ref{sec:values}); no foreign university patents in the Russian estimation sample.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\section{Returns at stake in the learning model}\label{app:leverslearning}
+
+Table~\ref{tab:levers-learning} repeats Table~\ref{tab:levers} with the learning model ($d=0.85$). Each patent's
+returns follow the model's random walk, and owners renew at the thresholds of the dynamic programme solved for each
+scenario, so a lever also changes the option value of later renewals. Markets for technology are calibrated to the
+same survival gains as in Table~\ref{tab:levers}; the factors are 1.54 for small firms, 1.52 for mid-sized firms and
+21 for universities, against 1.41, 1.39 and 5.0 in the deterministic model. Levels are about ten times those of
+Table~\ref{tab:levers} for markets for technology and five times for university patenting; fee relief is still worth
+about a million dollars a cohort, so the ranking of the levers is unchanged.
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Returns at stake per filing-year cohort, learning model (millions of 2024 PPP dollars)}\label{tab:levers-learning}
+\small
+% Source: em-patent-value output/policy_levers_learning.csv (26b_policy_levers_learning.py)
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{Fee relief} & Markets for technology & University patenting \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+ & China & Korea & China & China \\
+\midrule
+Small firms (1--9)          & 0.12 & 0.4 & 1{,}250 &  \\
+Mid-sized firms (10--99)    & 0.05 & 0.3 & 992 &  \\
+Large firms (100+)          & n.e. & n.e. & 0 &  \\
+Universities                & 0.4  & 0.3 & 8{,}390 & 982--1{,}413 \\
+\addlinespace
+All owners                  & 0.6  & 0.9 & 10{,}633 & 982--1{,}413 \\
+\quad \% of national R\&D   & 0.00 & 0.00 & 11.30 & 1.04--1.50 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} As Table~\ref{tab:levers}, with the learning model: 3{,}000 patents per owner group drawn from the
+estimation cells, 200 return paths each. n.e.: not eligible.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
