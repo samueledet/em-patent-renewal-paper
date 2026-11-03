@@ -6,7 +6,11 @@ lapses if the INPADOC legal-event table records its first cessation within 19.5 
 marks expiry at full term. I chose the offices by scanning every authority in the legal-event table for the share of
 grants with a recorded cessation and the continuity of records over time (Appendix~\ref{app:data}). The
 emerging-market offices are those of China, Korea, Russia, Taiwan and the Czech Republic; the advanced-economy
-offices are those of the United States, Japan, Germany, the United Kingdom and France.
+offices are those of the United States, Japan, Germany, the United Kingdom and France. Between them, the five
+emerging-market offices granted 84\% of the invention patents filed in 2000--2005 at the national offices of
+emerging economies in PATSTAT, and the five advanced-economy offices 88\% of those filed at the national offices of
+advanced economies (advanced economies as listed by the IMF in 2005, without Korea and Taiwan; regional offices
+such as the European Patent Office are left out).
 
 \paragraph{Owners.} An owner is domestic if the first applicant is from the office's country. Missing applicant
 countries (common in China and Japan) are imputed from the patent family and the office of first filing. Owners are
@@ -15,9 +19,9 @@ worldwide in 2000--2005, the cohort's own filing window, so that it is measured 
 1--9 inventions, mid-sized firms 10--99 and large firms 100 or more; universities and public research organisations
 form a fourth group. Individual inventors are excluded: their patents behave differently, and in China they were the
 main target of local filing subsidies in this period. Patents granted more than ten years after filing are dropped.
-Table~\ref{tab:sample} describes the sample. It covers 194{,}518 small firms, 28{,}657 mid-sized firms,
-4{,}487 large firms and 17{,}151 universities and public research organisations; panel B breaks them down by office
-group.
+Table~\ref{tab:sample} describes the sample: patents by office and owner in panel A, owners in panel B. It
+covers 194{,}518 small firms, 28{,}657 mid-sized firms, 4{,}487 large firms and 17{,}151 universities and public
+research organisations, each owner counted once whether it is domestic or foreign.
 
 \begin{table}[t]
 \centering
@@ -49,10 +53,21 @@ France         &    62{,}937 & 11{,}228 & 10{,}448 &  21{,}569 &  3{,}753 &  1{,
 \midrule
 Total          & 2{,}961{,}829 & 206{,}331 & 218{,}192 & 1{,}085{,}662 & 133{,}562 & 126{,}278 & 166{,}242 & 683{,}937 & 25{,}743 \\
 \midrule
-\multicolumn{10}{l}{\emph{B. Owners, by office group}} \\
+\multicolumn{10}{l}{\emph{B. Owners, by office}} \\
 % Source: em-patent-value output/owner_counts.csv (29b_owner_counts.py)
-Emerging       &   & 47{,}837 &  3{,}560 &     472 & 10{,}766 & 43{,}847 & 10{,}500 &   2{,}511 &  2{,}415 \\
-Advanced       &   & 75{,}448 & 15{,}703 &   2{,}913 &  2{,}648 & 39{,}775 & 10{,}665 &   2{,}261 &  2{,}551 \\
+China          &   & 18{,}838 & 1{,}014 & 157 & 6{,}122 & 30{,}420 & 7{,}518 & 2{,}084 & 1{,}738 \\
+Korea          &   & 18{,}996 & 1{,}798 & 243 & 732 & 5{,}607 & 3{,}730 & 1{,}592 & 433 \\
+Russia         &   & 6{,}121 & 176 & 5 & 3{,}679 & 4{,}735 & 407 & 93 & 289 \\
+Taiwan         &   & 3{,}513 & 563 & 82 & 183 & 5{,}255 & 3{,}295 & 1{,}209 & 270 \\
+Czech Rep.     &   & 373 & 19 & -- & 55 & 472 & 465 & 291 & 23 \\
+\addlinespace
+United States  &   & 42{,}360 & 5{,}853 & 787 & 1{,}369 & 32{,}868 & 8{,}435 & 1{,}448 & 2{,}129 \\
+Japan          &   & 15{,}610 & 6{,}588 & 1{,}684 & 497 & 3{,}674 & 1{,}284 & 510 & 282 \\
+Germany        &   & 7{,}270 & 1{,}993 & 299 & 341 & 1{,}246 & 830 & 545 & 79 \\
+United Kingdom &   & 3{,}916 & 531 & 44 & 145 & 2{,}399 & 1{,}451 & 767 & 210 \\
+France         &   & 6{,}292 & 739 & 99 & 296 & 1{,}071 & 634 & 474 & 60 \\
+\midrule
+All offices    &   & 123{,}285 & 19{,}258 & 3{,}365 & 13{,}410 & 78{,}990 & 16{,}172 & 3{,}015 & 4{,}510 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
@@ -60,17 +75,18 @@ Advanced       &   & 75{,}448 & 15{,}703 &   2{,}913 &  2{,}648 & 39{,}775 & 10{
 owners excluded. Patents: all firms, universities and owners of unknown type. Firm size: inventions (DOCDB families)
 filed worldwide by the harmonised applicant in 2000--2005; small 1--9, mid-sized 10--99, large 100 or more; no Czech
 firm reaches 100. Univ.: universities and public research organisations. Panel B: distinct harmonised applicants with at
-least one sample patent in the five offices of the group, each counted once; a firm from one emerging economy
-patenting in another counts as domestic at home and foreign there. Source: PATSTAT Global, autumn 2025.
+least one sample patent in the office. An owner patenting in several offices is counted in each; All offices counts
+it once among domestic and once among foreign owners, so the domestic and foreign totals overlap. Source: PATSTAT Global, autumn 2025.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 
 
-\paragraph{Quality.} Observable quality is measured by forward citations to the patent family (logged), citations
-in search reports that block later claims (categories X and Y), citations received by age four, family size and the
-WIPO technology field (35 fields). Domestic patents in emerging-market offices are cited far less than foreign ones,
+\paragraph{Quality.} Observable quality is measured by forward citations to the patent family (logged) and the
+WIPO technology field (35 fields), the controls in the main estimates. Robustness checks add citations in search
+reports that block later claims (categories X and Y), citations received in the four years after filing, the grant
+lag and family size. Domestic patents in emerging-market offices are cited far less than foreign ones,
 by a factor of five in China and six in Korea, so quality controls matter.
 
 \paragraph{Design.} The basic comparison is between domestic and foreign owners in the same office, which holds
