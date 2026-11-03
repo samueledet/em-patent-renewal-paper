@@ -69,7 +69,77 @@ whose search report marks the patent X or Y. Grant lag is measured to the first 
 \begin{table}[ht]
 \centering
 \begin{threeparttable}
-\caption{Domestic minus foreign owners within each office, alive 8 years after grant (pp)}\label{tab:within}
+\caption{Extra domestic--foreign survival gap, each emerging-market office against the advanced-economy offices (pp)}\label{tab:bycountry}
+\small
+% Source: em-patent-value output/table_by_country.csv (30b_table_by_country.py)
+\begin{tabular}{lccccc}
+\toprule
+ & All owners & Small firms & Mid-sized firms & Large firms & Universities \\
+ & & (1--9) & (10--99) & (100+) & \\
+\midrule
+China          & $1.5$ & $4.0^{***}$ & $8.4^{***}$ & $8.3^{*}$ & $-16.9^{***}$ \\
+               & (2.2) & (0.6) & (1.5) & (4.7) & (3.1) \\
+Korea          & $6.8^{***}$ & $5.1^{***}$ & $11.4^{***}$ & $7.3^{***}$ & $5.0$ \\
+               & (1.6) & (0.9) & (1.4) & (2.6) & (4.9) \\
+Russia         & $-9.8^{***}$ & $-4.3^{***}$ & $-1.2$ & $-8.4$ & $-11.9^{**}$ \\
+               & (1.2) & (1.5) & (4.1) & (8.4) & (4.7) \\
+Taiwan         & $10.1^{***}$ & $-2.4^{*}$ & $4.2^{**}$ & $13.3^{***}$ & $33.2^{***}$ \\
+               & (3.3) & (1.3) & (2.0) & (4.7) & (4.6) \\
+Czech Republic & $3.7$ & $6.3$ & $-1.1$ & -- & -- \\
+               & (3.1) & (4.7) & (5.4) &  &  \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Each row is Table~2 of the paper (all ten offices) re-estimated on one emerging-market office and
+the five advanced-economy offices (the United States, Japan, Germany, the United Kingdom and France). Each entry is the
+coefficient on domestic owner $\times$ EM office, $\delta$ in equation~(1) of the paper: the domestic--foreign gap in
+that office minus the gap in the advanced-economy offices, in percentage points; outcome alive eight years after grant.
+All owners: specification of Table~2, column 2 (office-specific citation slopes; office $\times$ filing-year, office
+$\times$ field and office $\times$ owner-group effects). Owner groups: specification of Table~2, columns 3--6, each
+group estimated separately. --: fewer than 100 domestic patents (no Czech firm has 100 or more inventions; 95 Czech
+university patents). Standard errors clustered by owner in parentheses. $^{*}$~$p<0.1$, $^{**}$~$p<0.05$,
+$^{***}$~$p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Richer quality controls: extra domestic gap in emerging-market offices (pp)}\label{tab:rich}
+\small
+% Source: em-patent-value output/ext_rich_quality.csv (24_extended_checks.py)
+\begin{tabular}{lccc}
+\toprule
+Owner group & (1) Citations & (2) + blocking, early & (3) + family size \\
+ & & citations, grant lag & \\
+\midrule
+Small firms (1--9)       & $2.8^{***}$ & $-0.4$ & $-1.7^{**}$ \\
+                         & (0.5) & (0.6) & (0.7) \\
+Mid-sized firms (10--99) & $7.9^{***}$ & $5.7^{***}$ & $4.0^{***}$ \\
+                         & (0.9) & (1.1) & (1.2) \\
+Large firms (100+)       & $9.0^{***}$ & $7.9^{***}$ & $7.8^{***}$ \\
+                         & (2.6) & (2.7) & (2.9) \\
+Universities             & $-5.7$ & $-5.6$ & $9.6^{**}$ \\
+                         & (3.6) & (3.8) & (4.3) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} Coefficient on domestic owner $\times$ EM office, $\delta$ in equation~(1) of the paper, all
+ten offices, each owner group estimated separately; outcome alive eight years after grant, in percentage points.
+Column 1 repeats Table~2 of the paper, columns 3--6 (all ten offices): office-specific slopes in log citations,
+office $\times$ filing-year and office $\times$ field effects. Column 2 adds office-specific slopes in log blocking
+citations (search-report categories X and Y), log citations received by age four, and the grant lag and its square.
+Column 3 adds an office-specific slope in log family size, shown separately because international filing also
+reflects owner capacity. Standard errors clustered by owner in parentheses. $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Domestic minus foreign owners within each office, not relative to the advanced economies (pp)}\label{tab:within}
 \small
 % Source: em-patent-value output/ext_within_office_groups.csv (23b_within_office_groups.py; size 2000-2005)
 \begin{tabular}{lccccc}
@@ -103,51 +173,15 @@ France         & $-1.1$ & $1.7$ & $-0.6$ & $-1.4$ & $1.2$ \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item \emph{Notes:} Domestic minus foreign owners, one regression per office and owner group, with log citations,
-filing-year and field effects (and owner-group effects for all owners); standard errors clustered by owner in
-parentheses. --: fewer than 100 domestic or foreign patents (no Czech firm has 100 or more inventions). $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
+\item \emph{Notes:} Coefficient on domestic owner from a separate regression for each office and owner group: the
+domestic--foreign gap in survival eight years after grant within that office, in percentage points, with log
+citations, filing-year and field effects (and owner-group effects for all owners). Unlike Table~2 of the paper and
+Table~\ref{tab:bycountry}, these gaps are not differenced against the advanced-economy offices; panel B shows the
+benchmark those tables difference against. Standard errors clustered by owner in parentheses. --: fewer than 100 domestic or foreign patents (no Czech firm has 100 or more inventions). $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Richer quality controls: extra domestic gap in emerging-market offices (pp)}\label{tab:rich}
-\small
-% Source: em-patent-value output/ext_rich_quality.csv (24_extended_checks.py)
-\begin{tabular}{lccc}
-\toprule
-Owner group & Citations & + blocking, early citations, grant lag & + family size \\
-\midrule
-Small firms (1--9)       & $2.8^{***}$ & $-0.4$ & $-1.7^{**}$ \\
-                         & (0.5) & (0.6) & (0.7) \\
-Mid-sized firms (10--99) & $7.9^{***}$ & $5.7^{***}$ & $4.0^{***}$ \\
-                         & (0.9) & (1.1) & (1.2) \\
-Large firms (100+)       & $9.0^{***}$ & $7.9^{***}$ & $7.8^{***}$ \\
-                         & (2.6) & (2.7) & (2.9) \\
-Universities             & $-5.7$ & $-5.6$ & $9.6^{**}$ \\
-                         & (3.6) & (3.8) & (4.3) \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Coefficient $\delta$ of equation~(1) of the paper by owner group, alive 8 years after grant, with
-office-specific slopes for each control; standard errors clustered by owner in parentheses. Family size is shown
-separately because international filing also reflects owner capacity. $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/fig3_by_country.png}
-\caption{Each emerging-market office against the advanced-economy offices}\label{fig:country}
-\figurenotes{Coefficient $\delta$ of equation~(1) of the paper estimated on one emerging-market office and the five
-advanced-economy offices, separately for each owner group, with office $\times$ filing-year and office $\times$ field
-effects and office-specific citation slopes; 95\% confidence intervals (standard errors clustered by owner). Outcome:
-alive eight years after grant. Firm size: inventions filed worldwide in 2000--2005. n/a: the Czech Republic has no
-domestic firm with 100 or more inventions and too few domestic university patents (95).}
-\end{figure}
 
 \paragraph{Small against large domestic firms.} A comparison that involves no foreign owners matches domestic small
 firms' patents with domestic patents of firms with 100 or more inventions in exact cells of office $\times$ filing year
@@ -162,7 +196,7 @@ not an emerging-market one.
 \centering
 \includegraphics[width=\textwidth]{figures/fig6_constraints_country.png}
 \caption{Owner-constraint tests by country}\label{fig:constraints-country}
-\figurenotes{Point estimates with 95\% confidence intervals, in percentage points; blue: emerging economies, orange: advanced economies; squares: all firms, circles: small firms (1--9 inventions filed worldwide in 2000--2005), triangles: universities. Arrows: interval beyond the axis; a number replaces a point beyond it. The estimates of Figure~1 by country of origin (A) or office (B, C), specified as in footnote~3. n/a: no sales of granted patents recorded (Korea records changes of owner only before grant).}
+\figurenotes{Point estimates with 95\% confidence intervals, in percentage points; blue: emerging economies, orange: advanced economies; squares: all firms, circles: small firms (1--9 inventions filed worldwide in 2000--2005), triangles: universities. Arrows: interval beyond the axis; a number replaces a point beyond it. The estimates of Figure~1 by country of origin (A) or office (B, C), specified as in footnote~4. n/a: no sales of granted patents recorded (Korea records changes of owner only before grant).}
 \end{figure}
 
 \begin{table}[ht]
