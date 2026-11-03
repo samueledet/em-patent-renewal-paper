@@ -1,4 +1,4 @@
-# The Invention, Not the Inventor: Patent Value in Emerging Markets
+# The Invention or the Inventor? Patent Value in Emerging Markets
 
 Discussion-paper draft: main text under 10 pages, at most 20 pages with references and appendices. LaTeX source,
 compiled with pdfLaTeX + BibTeX (Overleaf default).
