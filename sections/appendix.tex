@@ -35,7 +35,7 @@ Ukraine,} \\
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Granted invention patents filed 2000--2010. Lapsed by 15 years: share of 2000--2005 filings whose
 first cessation event comes within 15 years of filing. Domestic grants use the raw first-applicant country and are
-understated where it is often missing. Inclusion in the analysis also requires about 1{,}000 domestic firm patents
+understated where it is often missing. China and Korea, in the main sample (Table~\ref{tab:sample}), pass all the tests. Inclusion in the analysis also requires about 1{,}000 domestic firm patents
 in the 2000--2005 sample; the Czech Republic (909) is kept as a small Central European case, Brazil (164) and Hungary
 (299) are dropped. Ten advanced-economy offices pass the same tests; the five largest by domestic firm patents with
 full records are used.
@@ -149,6 +149,61 @@ alive eight years after grant. Firm size: inventions filed worldwide in 2000--20
 domestic firm with 100 or more inventions and too few domestic university patents (95).}
 \end{figure}
 
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Identical fees and inference across offices: extra domestic gap in emerging-market offices (pp)}\label{tab:inference}
+\small
+% Source: em-patent-value output/referee_fees.csv, referee_inference.csv (32_referee_checks.py)
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+\multicolumn{5}{l}{\emph{A. Estimates, standard errors clustered by owner}} \\
+ & (1) Table 2 & (2) Without & (3) Alive 3 years & (4) Identical \\
+ & & Russia & after grant & fees \\
+\midrule
+All owners      & $4.1^{***}$ & $5.3^{***}$ & $3.7^{***}$ & $4.0^{**}$ \\
+                & (1.4) & (1.5) & (1.4) & (1.6) \\
+Small firms     & $2.8^{***}$ & $3.5^{***}$ & $2.3^{***}$ & $1.5^{***}$ \\
+                & (0.5) & (0.5) & (0.5) & (0.6) \\
+Mid-sized firms & $7.9^{***}$ & $8.4^{***}$ & $5.7^{***}$ & $6.2^{***}$ \\
+                & (1.0) & (1.0) & (0.9) & (1.0) \\
+Large firms     & $9.0^{***}$ & $9.1^{***}$ & $7.8^{***}$ & $8.2^{***}$ \\
+                & (2.6) & (2.6) & (2.4) & (2.7) \\
+Universities    & $-5.7$ & $-5.2$ & $-7.7^{**}$ & $-6.9^{*}$ \\
+                & (3.6) & (3.7) & (3.6) & (4.0) \\
+\bottomrule
+\end{tabular*}
+
+\medskip
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccccc}
+\toprule
+\multicolumn{7}{l}{\emph{B. Inference across offices}} \\
+ & \multicolumn{3}{c}{Table 2 sample, column (1)} & \multicolumn{3}{c}{Identical fees, column (4)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & s.e. & $p$, wild & $p$, rand. & s.e. & $p$, wild & $p$, rand. \\
+\midrule
+All owners      & 3.5 & 0.38 & 0.66 & 2.4 & 0.20 & 0.59 \\
+Small firms     & 2.1 & 0.39 & 0.68 & 2.0 & 0.59 & 0.78 \\
+Mid-sized firms & 3.0 & 0.13 & 0.36 & 2.9 & 0.15 & 0.39 \\
+Large firms     & 2.4 & 0.08 & 0.19 & 1.8 & 0.07 & 0.10 \\
+Universities    & 9.5 & 0.70 & 0.71 & 10.2 & 0.67 & 0.59 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} $\delta$ of Table~\ref{tab:survival} (all ten offices; column 2 specification for all owners, columns
+3--6 for the owner groups). Panel A: (2) without Russia, where foreign owners paid a separate non-resident fee
+schedule until 2012; (3) patents alive three years after grant, so the early-year discounts for eligible domestic
+owners in China and Korea drop out; (4) as (3), without Russia, and with Chinese patents granted up to 2010 and
+Korean patents up to 2006, so that domestic and foreign owners pay the same fees in every year the outcome covers.
+Panel B: s.e.: clustered by office; $p$, wild: wild cluster bootstrap by office with the null imposed (Webb weights,
+99{,}999 draws); $p$, rand.: randomization inference over every assignment of five of the ten offices (four of
+nine in column 4) to the emerging-market group, 252 (126) assignments, two-sided. All fixed effects and citation
+slopes are office-specific, so each draw reuses the office-level sums of the residualised regressor and outcome.
+$^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$ (panel A).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \paragraph{Small against large domestic firms.} A comparison that involves no foreign owners matches domestic small
 firms' patents with domestic patents of firms with 100 or more inventions in exact cells of office $\times$ filing year
 $\times$ field $\times$ early-citation bin $\times$ blocking-citation bin $\times$ grant-lag bin. Small firms keep their
@@ -175,8 +230,8 @@ not an emerging-market one.
 \toprule
 Office & Variation & Coefficient & Elasticity \\
 \midrule
-China & 85\% discount window extended (2016, 2018), intent to treat & 0.0017 (0.0004) & 0.05 \\
-Korea & 30\%/50\% discounts for years 4+ (2014, 2016, 2018) & $-0.033$ (0.027) & n.i. \\
+China & 70\% off fee-years 1--3; 85\% off years 1--6 (2016) and 1--10 (2018), intent to treat & 0.0008 (0.0005) & 0.02 \\
+Korea & 30\% off years 4--6 (2014) and 4--9 (2016), 50\% off years 4+ (2018) & $-0.033$ (0.027) & n.i. \\
 United States & stage-specific fee changes (2004, 2013, 2020) & 0.047 (0.019) & 0.26 \\
 \quad placebo: 100+ firms & stage-specific fee changes & 0.009 (0.048) & 0.05 \\
 United States & 2022 small-entity discount (50\% to 60\%) & 0.023 (0.024) & -- \\
@@ -247,11 +302,20 @@ decision $k$ weights each path by the probability of surviving to $k-1$ and laps
 at the end of the data by the probability of surviving all observed decisions, plus the value of optimal renewals
 after the data end. A patent's value is the weighted median over paths.
 
-\paragraph{Fee discounts.} For the bounds in Section~\ref{sec:values}, eligible owners are domestic firms with 1--99
+\paragraph{Fee discounts.} For the fee-discount estimates in Sections~\ref{sec:values} and~\ref{sec:stake}, eligible owners are domestic firms with 1--99
 families and domestic universities. In China they pay 40\% of the fee in fee-years 1--3 from the grant year (to
 February 2001), 30\% in fee-years 1--3 (to August 2016), 15\% in fee-years 1--6 (to July 2018) and 15\% in fee-years
 1--10 (from August 2018). In Korea, registration fees for years 1--3 fall outside the model; owners pay 70\% of the
-fee in years 4--6 from March 2014 and 50\% in years 4 and later from April 2018.
+fee in years 4--6 from March 2014 and 50\% in years 4 and later from April 2018 (the extension of the 30\% discount to
+years 7--9 in July 2016 is not modelled).
+
+\paragraph{Models and decay rates.} The comparisons between owners do not depend on the model or on $d$. The ratio
+of small domestic to small foreign firms' median value at equal citations is, in the deterministic model with
+$d = 0.80$, 0.85 and 0.90, 2.15, 1.92 and 1.79 in China, 2.09, 2.45 and 1.78 in Korea, 1.36, 1.34 and 1.29 in the
+United States, 1.55, 1.40 and 1.40 in Germany, 1.09, 1.27 and 1.07 in the United Kingdom and 4.76, 4.08 and 3.30 in
+Japan; in the learning model ($d = 0.85$) it is 1.61, 2.16, 1.46, 1.31, 1.12 and 4.72. For universities the ratio
+is 0.35--0.42 in China in the deterministic model and 0.25 in the learning model, against 1.01--1.08 in the United
+States and 0.87--1.46 in Germany.
 
 \begin{table}[ht]
 \centering
@@ -319,9 +383,13 @@ France         & $-0.04$ & $0.00$ & $0.06$ & $-0.06$ & $-0.48^{*}$ \\
 \item \emph{Notes:} Posterior median value at grant of each patent from the learning model with a common prior
 ($d=0.85$; 2024 PPP dollars), regressed on domestic owner $\times$ owner group with fee-path $\times$ citation-band and
 field effects, one regression per office (all owners: domestic owner with owner-group effects); standard errors
-clustered by owner in parentheses. 1.42 million patents. --: too few patents. Japanese university estimates are
+clustered by owner in parentheses. 1.42 million patents (1.37 million without Russia, the sample of
+Figure~\ref{fig:valuespooled}), drawn at random, up to 60{,}000 per office, owner group and domestic status.
+Figure~\ref{fig:valuespooled} pools the offices in one regression, which weights them by the variation in ownership
+within fee-path $\times$ citation-band cells rather than by patents, so its estimates are not averages of this
+table. --: too few patents. Japanese university estimates are
 unstable across specifications. $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
-\item[a] Not identified (Section~\ref{sec:values}); domestic ownership is collinear with the fee path for all owners,
+\item[a] Not identified (Section~\ref{sec:values}), shown for completeness; domestic ownership is collinear with the fee path for all owners,
 and there are no foreign university patents in the Russian estimation sample.
 \end{tablenotes}
 \end{threeparttable}
