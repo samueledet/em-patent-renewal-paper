@@ -230,7 +230,18 @@ counts measure only roughly.
 
 \section{Renewal models and patent values}\label{app:models}
 
-The deterministic and learning models are set out in Appendix~A of the paper.
+The deterministic and learning models are set out in Appendix~A of the paper; Figure~\ref{fig:models} sketches them.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/fig8_models.png}
+\caption{The two renewal models}\label{fig:models}
+\figurenotes{Illustrative numbers, not estimates. A: a patent earns $r_0 d^t$ a year and is renewed while that
+covers the fee, so the year it lapses reveals its initial return $r_0$, and the ages at which patents lapse trace out
+the distribution of $r_0$. B: log returns follow a random walk with drift $\ln d$ whose shocks shrink as the owner
+learns what the patent is worth (shaded: 90\% range of returns). The owner renews while the return is above a
+threshold that lies below the fee by the option value of later renewals; that value vanishes at expiry.}
+\end{figure}
 
 \paragraph{Fees.} Fee schedules by year of life and period come from official sources for each office (laws,
 decrees, fee regulations and office notices), with the basis of each fee: per year from filing (China, Germany, the
