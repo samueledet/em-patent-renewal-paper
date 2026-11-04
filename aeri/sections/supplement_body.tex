@@ -35,7 +35,7 @@ Ukraine,} \\
 \begin{tablenotes}\footnotesize
 \item \emph{Notes:} Granted invention patents filed 2000--2010. Lapsed by 15 years: share of 2000--2005 filings whose
 first cessation event comes within 15 years of filing. Domestic grants use the raw first-applicant country and are
-understated where it is often missing. Inclusion in the analysis also requires about 1{,}000 domestic firm patents
+understated where it is often missing. China and Korea, in the main sample (Table~1), pass all the tests. Inclusion in the analysis also requires about 1{,}000 domestic firm patents
 in the 2000--2005 sample; the Czech Republic (909) is kept as a small Central European case, Brazil (164) and Hungary
 (299) are dropped. Ten advanced-economy offices pass the same tests; the five largest by domestic firm patents with
 full records are used.
@@ -196,7 +196,7 @@ not an emerging-market one.
 \centering
 \includegraphics[width=\textwidth]{figures/fig6_constraints_country.png}
 \caption{Owner-constraint tests by country}\label{fig:constraints-country}
-\figurenotes{Point estimates with 95\% confidence intervals, in percentage points; blue: emerging economies, orange: advanced economies; squares: all firms, circles: small firms (1--9 inventions filed worldwide in 2000--2005), triangles: universities. Arrows: interval beyond the axis; a number replaces a point beyond it. The estimates of Figure~1 by country of origin (A) or office (B, C), specified as in footnote~4. n/a: no sales of granted patents recorded (Korea records changes of owner only before grant).}
+\figurenotes{Point estimates with 95\% confidence intervals, in percentage points; blue: emerging economies, orange: advanced economies; squares: all firms, circles: small firms (1--9 inventions filed worldwide in 2000--2005), triangles: universities. Arrows: interval beyond the axis; a number replaces a point beyond it. The estimates of Figure~1 by country of origin (A) or office (B, C), specified as in footnote~5 of the paper. n/a: no sales of granted patents recorded (Korea records changes of owner only before grant).}
 \end{figure}
 
 \begin{table}[ht]
@@ -209,8 +209,8 @@ not an emerging-market one.
 \toprule
 Office & Variation & Coefficient & Elasticity \\
 \midrule
-China & 85\% discount window extended (2016, 2018), intent to treat & 0.0017 (0.0004) & 0.05 \\
-Korea & 30\%/50\% discounts for years 4+ (2014, 2016, 2018) & $-0.033$ (0.027) & n.i. \\
+China & 70\% off fee-years 1--3; 85\% off years 1--6 (2016) and 1--10 (2018), intent to treat & 0.0008 (0.0005) & 0.02 \\
+Korea & 30\% off years 4--6 (2014) and 4--9 (2016), 50\% off years 4+ (2018) & $-0.033$ (0.027) & n.i. \\
 United States & stage-specific fee changes (2004, 2013, 2020) & 0.047 (0.019) & 0.26 \\
 \quad placebo: 100+ firms & stage-specific fee changes & 0.009 (0.048) & 0.05 \\
 United States & 2022 small-entity discount (50\% to 60\%) & 0.023 (0.024) & -- \\
@@ -253,11 +253,20 @@ before July 2002), or per year from the grant announcement (Taiwan, whose 2002 s
 of the year paid (for Taiwan, the DGBAS index and the IMF implied PPP rate); fees due after 2024 are held at 2024
 prices. Russian lapse records end in 2022, so Russian patents are censored from mid-2022.
 
-\paragraph{Fee discounts.} For the bounds in Section~5, eligible owners are domestic firms with 1--99
+\paragraph{Fee discounts.} For the fee-discount estimates in Sections~5 and~6, eligible owners are domestic firms with 1--99
 families and domestic universities. In China they pay 40\% of the fee in fee-years 1--3 from the grant year (to
 February 2001), 30\% in fee-years 1--3 (to August 2016), 15\% in fee-years 1--6 (to July 2018) and 15\% in fee-years
 1--10 (from August 2018). In Korea, registration fees for years 1--3 fall outside the model; owners pay 70\% of the
-fee in years 4--6 from March 2014 and 50\% in years 4 and later from April 2018.
+fee in years 4--6 from March 2014 and 50\% in years 4 and later from April 2018 (the extension of the 30\% discount to
+years 7--9 in July 2016 is not modelled).
+
+\paragraph{Models and decay rates.} The comparisons between owners do not depend on the model or on $d$. The ratio
+of small domestic to small foreign firms' median value at equal citations is, in the deterministic model with
+$d = 0.80$, 0.85 and 0.90, 2.15, 1.92 and 1.79 in China, 2.09, 2.45 and 1.78 in Korea, 1.36, 1.34 and 1.29 in the
+United States, 1.55, 1.40 and 1.40 in Germany, 1.09, 1.27 and 1.07 in the United Kingdom and 4.76, 4.08 and 3.30 in
+Japan; in the learning model ($d = 0.85$) it is 1.61, 2.16, 1.46, 1.31, 1.12 and 4.72. For universities the ratio
+is 0.35--0.42 in China in the deterministic model and 0.25 in the learning model, against 1.01--1.08 in the United
+States and 0.87--1.46 in Germany.
 
 \begin{table}[ht]
 \centering
@@ -325,9 +334,12 @@ France         & $-0.04$ & $0.00$ & $0.06$ & $-0.06$ & $-0.48^{*}$ \\
 \item \emph{Notes:} Posterior median value at grant of each patent from the learning model with a common prior
 ($d=0.85$; 2024 PPP dollars), regressed on domestic owner $\times$ owner group with fee-path $\times$ citation-band and
 field effects, one regression per office (all owners: domestic owner with owner-group effects); standard errors
-clustered by owner in parentheses. 1.42 million patents. --: too few patents. Japanese university estimates are
+clustered by owner in parentheses. 1.42 million patents (1.37 million without Russia, the sample of Figure~2), drawn
+at random, up to 60{,}000 per office, owner group and domestic status. Figure~2 pools the offices in one regression,
+which weights them by the variation in ownership within fee-path $\times$ citation-band cells rather than by
+patents, so its estimates are not averages of this table. --: too few patents. Japanese university estimates are
 unstable across specifications. $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
-\item[a] Not identified (Section~5); domestic ownership is collinear with the fee path for all owners,
+\item[a] Not identified (Section~5), shown for completeness; domestic ownership is collinear with the fee path for all owners,
 and there are no foreign university patents in the Russian estimation sample.
 \end{tablenotes}
 \end{threeparttable}

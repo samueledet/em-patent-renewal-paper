@@ -1,7 +1,8 @@
 \section{Data and design}\label{sec:data}
 
 \paragraph{Patents and lapses.} The data are PATSTAT Global \citep[autumn 2025 edition;][]{PATSTAT}. The sample is
-granted invention patents filed in 2000--2005 at ten national offices, followed for close to twenty years. A patent
+granted invention patents filed in 2000--2005 at ten national offices, followed for up to twenty years (to 2019 in Korea and 2022 in Russia, where the
+lapse records end). A patent
 lapses if the INPADOC legal-event table records its first cessation within 19.5 years of filing; a later cessation
 marks expiry at full term. I chose the offices by scanning every authority in the legal-event table for the share of
 grants with a recorded cessation and the continuity of records over time (Supplemental Appendix~S1). The
@@ -10,7 +11,7 @@ offices are those of the United States, Japan, Germany, the United Kingdom and F
 emerging-market offices granted 84\% of the invention patents filed in 2000--2005 at the national offices of
 emerging economies in PATSTAT, and the five advanced-economy offices 88\% of those filed at the national offices of
 advanced economies.\footnote{Advanced economies as listed by the IMF in 2005, without Korea and Taiwan; regional offices
-such as the European Patent Office are left out}
+such as the European Patent Office are left out.}
 
 \paragraph{Owners.} An owner is domestic if the first applicant is from the office's country. Missing applicant
 countries (common in China and Japan) are imputed from the patent family and the office of first filing. Owners are
@@ -76,7 +77,9 @@ owners excluded. Patents: all firms, universities and owners of unknown type. Fi
 filed worldwide by the harmonised applicant in 2000--2005; small 1--9, mid-sized 10--99, large 100 or more; no Czech
 firm reaches 100. Univ.: universities and public research organisations. Panel B: distinct harmonised applicants with at
 least one sample patent in the office. An owner patenting in several offices is counted in each; All offices counts
-it once among domestic and once among foreign owners, so the domestic and foreign totals overlap. Source: PATSTAT Global, autumn 2025.
+it once among domestic and once among foreign owners, so the domestic and foreign totals overlap and fall short
+of the sums over offices (an owner whose patents name applicants from different countries can be domestic in more
+than one office). Source: PATSTAT Global, autumn 2025.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
