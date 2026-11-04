@@ -182,6 +182,61 @@ benchmark those tables difference against. Standard errors clustered by owner in
 \end{threeparttable}
 \end{table}
 
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Identical fees and inference across offices: extra domestic gap in emerging-market offices (pp)}\label{tab:inference}
+\small
+% Source: em-patent-value output/referee_fees.csv, referee_inference.csv (32_referee_checks.py)
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+\multicolumn{5}{l}{\emph{A. Estimates, standard errors clustered by owner}} \\
+ & (1) Table 2 & (2) Without & (3) Alive 3 years & (4) Identical \\
+ & & Russia & after grant & fees \\
+\midrule
+All owners      & $4.1^{***}$ & $5.3^{***}$ & $3.7^{***}$ & $4.0^{**}$ \\
+                & (1.4) & (1.5) & (1.4) & (1.6) \\
+Small firms     & $2.8^{***}$ & $3.5^{***}$ & $2.3^{***}$ & $1.5^{***}$ \\
+                & (0.5) & (0.5) & (0.5) & (0.6) \\
+Mid-sized firms & $7.9^{***}$ & $8.4^{***}$ & $5.7^{***}$ & $6.2^{***}$ \\
+                & (1.0) & (1.0) & (0.9) & (1.0) \\
+Large firms     & $9.0^{***}$ & $9.1^{***}$ & $7.8^{***}$ & $8.2^{***}$ \\
+                & (2.6) & (2.6) & (2.4) & (2.7) \\
+Universities    & $-5.7$ & $-5.2$ & $-7.7^{**}$ & $-6.9^{*}$ \\
+                & (3.6) & (3.7) & (3.6) & (4.0) \\
+\bottomrule
+\end{tabular*}
+
+\medskip
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccccc}
+\toprule
+\multicolumn{7}{l}{\emph{B. Inference across offices}} \\
+ & \multicolumn{3}{c}{Table 2 sample, column (1)} & \multicolumn{3}{c}{Identical fees, column (4)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & s.e. & $p$, wild & $p$, rand. & s.e. & $p$, wild & $p$, rand. \\
+\midrule
+All owners      & 3.5 & 0.38 & 0.66 & 2.4 & 0.20 & 0.59 \\
+Small firms     & 2.1 & 0.39 & 0.68 & 2.0 & 0.59 & 0.78 \\
+Mid-sized firms & 3.0 & 0.13 & 0.36 & 2.9 & 0.15 & 0.39 \\
+Large firms     & 2.4 & 0.08 & 0.19 & 1.8 & 0.07 & 0.10 \\
+Universities    & 9.5 & 0.70 & 0.71 & 10.2 & 0.67 & 0.59 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}\footnotesize
+\item \emph{Notes:} $\delta$ of Table~2 of the paper (all ten offices; column 2 specification for all owners, columns
+3--6 for the owner groups). Panel A: (2) without Russia, where foreign owners paid a separate non-resident fee
+schedule until 2012; (3) patents alive three years after grant, so the early-year discounts for eligible domestic
+owners in China and Korea drop out; (4) as (3), without Russia, and with Chinese patents granted up to 2010 and
+Korean patents up to 2006, so that domestic and foreign owners pay the same fees in every year the outcome covers.
+Panel B: s.e.: clustered by office; $p$, wild: wild cluster bootstrap by office with the null imposed (Webb weights,
+99{,}999 draws); $p$, rand.: randomization inference over every assignment of five of the ten offices (four of
+nine in column 4) to the emerging-market group, 252 (126) assignments, two-sided. All fixed effects and citation
+slopes are office-specific, so each draw reuses the office-level sums of the residualised regressor and outcome.
+$^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$ (panel A).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 
 \paragraph{Small against large domestic firms.} A comparison that involves no foreign owners matches domestic small
 firms' patents with domestic patents of firms with 100 or more inventions in exact cells of office $\times$ filing year
