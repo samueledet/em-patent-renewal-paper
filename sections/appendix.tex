@@ -58,160 +58,51 @@ national examination begins. Source: em-patent-value output/sample\_lags.csv.}
 \end{figure}
 
 \paragraph{Owners and quality.} Owner identities are PATSTAT's harmonised applicant names (HAN). Sector comes from
-PATSTAT's sector allocation. Firm size is the number of distinct DOCDB families in which the HAN appears as an
-applicant among invention-patent applications filed worldwide in 2000--2005. Applications with no recorded applicant
-have no HAN or sector and drop out of the owner-group estimates; they are common among domestic patents in Russia and
-foreign patents in Japan and Korea, where national records often omit applicants. Citation counts are citing DOCDB families. Blocking citations are citing applications
+PATSTAT's sector allocation. Applications with no recorded applicant have no HAN or sector and drop out of the
+owner-group estimates; they are common among domestic patents in Russia and foreign patents in Japan and Korea, where
+national records often omit applicants.
+
+\paragraph{Corporate groups.} Firm size is the number of distinct DOCDB families filed worldwide in 2000--2005 by the
+owner's corporate group. Multinationals and Chinese groups file under several HANs (local subsidiaries, name variants),
+so the HAN alone classes units of large groups as small or mid-sized. Company HANs are linked when they share a core
+name in the same country (legal forms, bracketed text and trailing place names removed), when a HAN's core name starts
+with the first two distinctive words of a group with 100 or more families, or when at least half of a HAN's families
+(and at least two) are shared with such a group. Dictionary words, place names and generic business words in several
+languages never count as distinctive, and person names are never linked. In audits of randomly drawn reclassified
+owners, these links were correct in about 95\% of cases. A group's size is the largest of the owner's own families,
+its group total and the totals of linked large groups. The change matters most for foreign owners: in China, 44\% of
+foreign small-firm patents move to a larger class against 6\% of domestic ones. A wider definition that also links
+owners by brand words anywhere in the name (Sony, Haier, Sinopec units) catches more groups but also unrelated firms
+that share a surname or a place name; it is used as a robustness check.
+
+Citation counts are citing DOCDB families. Blocking citations are citing applications
 whose search report marks the patent X or Y. Grant lag is measured to the first publication flagged as a grant.
 
 \section{Survival: additional results}\label{app:results}
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Domestic minus foreign owners within each office, alive 8 years after grant (pp)}\label{tab:within}
-\small
-% Source: em-patent-value output/ext_within_office_groups.csv (23b_within_office_groups.py; size 2000-2005)
-\begin{tabular}{lccccc}
-\toprule
- & All owners & Small firms & Mid-sized firms & Large firms & Universities \\
- & & (1--9) & (10--99) & (100+) & \\
-\midrule
-\multicolumn{6}{l}{\emph{A. Emerging-market offices}} \\
-China          & $9.0^{***}$ & $7.2^{***}$ & $13.6^{***}$ & $12.7^{***}$ & $-13.5^{***}$ \\
-               & (2.1) & (0.5) & (1.4) & (4.5) & (2.0) \\
-Korea          & $12.2^{***}$ & $8.3^{***}$ & $16.7^{***}$ & $11.7^{***}$ & $8.4^{*}$ \\
-               & (1.5) & (0.9) & (1.4) & (2.2) & (4.4) \\
-Russia         & $-4.2^{**}$ & $-1.1$ & $4.1$ & $-4.1$ & $-8.5^{**}$ \\
-               & (1.8) & (1.4) & (4.1) & (8.3) & (4.0) \\
-Taiwan         & $15.0^{***}$ & $0.8$ & $9.4^{***}$ & $17.6^{***}$ & $36.6^{***}$ \\
-               & (3.1) & (1.3) & (1.9) & (4.4) & (3.5) \\
-Czech Republic & $7.7^{**}$ & $9.6^{**}$ & $4.2$ & -- & -- \\
-               & (3.2) & (4.8) & (5.5) &  &  \\
-\addlinespace
-\multicolumn{6}{l}{\emph{B. Advanced-economy offices}} \\
-United States  & $2.6^{**}$ & $1.8^{***}$ & $3.4^{***}$ & $2.7^{*}$ & $1.7$ \\
-               & (1.1) & (0.3) & (0.4) & (1.6) & (2.6) \\
-Japan          & $16.7^{***}$ & $17.8^{***}$ & $20.8^{***}$ & $14.8^{***}$ & $26.0^{***}$ \\
-               & (1.8) & (1.1) & (1.3) & (2.5) & (6.5) \\
-Germany        & $5.0^{***}$ & $6.1^{***}$ & $1.6$ & $5.7^{**}$ & $5.1$ \\
-               & (1.8) & (1.5) & (1.8) & (2.5) & (9.1) \\
-United Kingdom & $0.4$ & $2.5^{*}$ & $-0.1$ & $2.4$ & $-13.9^{***}$ \\
-               & (1.9) & (1.3) & (2.2) & (6.3) & (3.7) \\
-France         & $-1.1$ & $1.7$ & $-0.6$ & $-1.4$ & $1.2$ \\
-               & (2.8) & (1.7) & (2.2) & (4.3) & (6.7) \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Domestic minus foreign owners, one regression per office and owner group, with log citations,
-filing-year and field effects (and owner-group effects for all owners); standard errors clustered by owner in
-parentheses. --: fewer than 100 domestic or foreign patents (no Czech firm has 100 or more inventions). $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+Table~\ref{tab:bycountry} compares each emerging-market office with the advanced-economy offices,
+Table~\ref{tab:rich} collects the robustness checks of Section~\ref{sec:survival}, and Table~\ref{tab:within} shows the
+domestic--foreign gap within each office, the benchmark that the other tables difference against. All use the
+preferred specification of Table~\ref{tab:survival} and firm size by corporate group.
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Richer quality controls: extra domestic gap in emerging-market offices (pp)}\label{tab:rich}
-\small
-% Source: em-patent-value output/ext_rich_quality.csv (24_extended_checks.py)
-\begin{tabular}{lccc}
-\toprule
-Owner group & Citations & + blocking, early citations, grant lag & + family size \\
-\midrule
-Small firms (1--9)       & $2.8^{***}$ & $-0.4$ & $-1.7^{**}$ \\
-                         & (0.5) & (0.6) & (0.7) \\
-Mid-sized firms (10--99) & $7.9^{***}$ & $5.7^{***}$ & $4.0^{***}$ \\
-                         & (0.9) & (1.1) & (1.2) \\
-Large firms (100+)       & $9.0^{***}$ & $7.9^{***}$ & $7.8^{***}$ \\
-                         & (2.6) & (2.7) & (2.9) \\
-Universities             & $-5.7$ & $-5.6$ & $9.6^{**}$ \\
-                         & (3.6) & (3.8) & (4.3) \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Coefficient $\delta$ of equation~\eqref{eq:did} by owner group, alive 8 years after grant, with
-office-specific slopes for each control; standard errors clustered by owner in parentheses. Family size is shown
-separately because international filing also reflects owner capacity. $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/fig3_by_country.png}
-\caption{Each emerging-market office against the advanced-economy offices}\label{fig:country}
-\figurenotes{Coefficient $\delta$ of equation~\eqref{eq:did} estimated on one emerging-market office and the five
-advanced-economy offices, separately for each owner group, with office $\times$ filing-year and office $\times$ field
-effects and office-specific citation slopes; 95\% confidence intervals (standard errors clustered by owner). Outcome:
-alive eight years after grant. Firm size: inventions filed worldwide in 2000--2005. n/a: the Czech Republic has no
-domestic firm with 100 or more inventions and too few domestic university patents (95).}
-\end{figure}
+\input{tables/tabS_bycountry}
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Identical fees and inference across offices: extra domestic gap in emerging-market offices (pp)}\label{tab:inference}
-\small
-% Source: em-patent-value output/referee_fees.csv, referee_inference.csv (32_referee_checks.py)
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc}
-\toprule
-\multicolumn{5}{l}{\emph{A. Estimates, standard errors clustered by owner}} \\
- & (1) Table 2 & (2) Without & (3) Alive 3 years & (4) Identical \\
- & & Russia & after grant & fees \\
-\midrule
-All owners      & $4.1^{***}$ & $5.3^{***}$ & $3.7^{***}$ & $4.0^{**}$ \\
-                & (1.4) & (1.5) & (1.4) & (1.6) \\
-Small firms     & $2.8^{***}$ & $3.5^{***}$ & $2.3^{***}$ & $1.5^{***}$ \\
-                & (0.5) & (0.5) & (0.5) & (0.6) \\
-Mid-sized firms & $7.9^{***}$ & $8.4^{***}$ & $5.7^{***}$ & $6.2^{***}$ \\
-                & (1.0) & (1.0) & (0.9) & (1.0) \\
-Large firms     & $9.0^{***}$ & $9.1^{***}$ & $7.8^{***}$ & $8.2^{***}$ \\
-                & (2.6) & (2.6) & (2.4) & (2.7) \\
-Universities    & $-5.7$ & $-5.2$ & $-7.7^{**}$ & $-6.9^{*}$ \\
-                & (3.6) & (3.7) & (3.6) & (4.0) \\
-\bottomrule
-\end{tabular*}
+\input{tables/tabS_robust}
 
-\medskip
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccccc}
-\toprule
-\multicolumn{7}{l}{\emph{B. Inference across offices}} \\
- & \multicolumn{3}{c}{Table 2 sample, column (1)} & \multicolumn{3}{c}{Identical fees, column (4)} \\
-\cmidrule(lr){2-4}\cmidrule(lr){5-7}
- & s.e. & $p$, wild & $p$, rand. & s.e. & $p$, wild & $p$, rand. \\
-\midrule
-All owners      & 3.5 & 0.38 & 0.66 & 2.4 & 0.20 & 0.59 \\
-Small firms     & 2.1 & 0.39 & 0.68 & 2.0 & 0.59 & 0.78 \\
-Mid-sized firms & 3.0 & 0.13 & 0.36 & 2.9 & 0.15 & 0.39 \\
-Large firms     & 2.4 & 0.08 & 0.19 & 1.8 & 0.07 & 0.10 \\
-Universities    & 9.5 & 0.70 & 0.71 & 10.2 & 0.67 & 0.59 \\
-\bottomrule
-\end{tabular*}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} $\delta$ of Table~\ref{tab:survival} (all ten offices; column 2 specification for all owners, columns
-3--6 for the owner groups). Panel A: (2) without Russia, where foreign owners paid a separate non-resident fee
-schedule until 2012; (3) patents alive three years after grant, so the early-year discounts for eligible domestic
-owners in China and Korea drop out; (4) as (3), without Russia, and with Chinese patents granted up to 2010 and
-Korean patents up to 2006, so that domestic and foreign owners pay the same fees in every year the outcome covers.
-Panel B: s.e.: clustered by office; $p$, wild: wild cluster bootstrap by office with the null imposed (Webb weights,
-99{,}999 draws); $p$, rand.: randomization inference over every assignment of five of the ten offices (four of
-nine in column 4) to the emerging-market group, 252 (126) assignments, two-sided. All fixed effects and citation
-slopes are office-specific, so each draw reuses the office-level sums of the residualised regressor and outcome.
-$^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$ (panel A).
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\input{tables/tabS_within}
 
-\paragraph{Small against large domestic firms.} A comparison that involves no foreign owners matches domestic small
-firms' patents with domestic patents of firms with 100 or more inventions in exact cells of office $\times$ filing year
-$\times$ field $\times$ early-citation bin $\times$ blocking-citation bin $\times$ grant-lag bin. Small firms keep their
-patents 3.9 points less often than large firms in the advanced-economy offices, and in the emerging-market
-offices the difference is the same: the extra gap is 0.6 points. The small-firm shortfall is a small-firm effect,
-not an emerging-market one.
+
 
 \section{Owner constraints: additional results}\label{app:constraints}
+
+Table~\ref{tab:sales} reports the sale test of Section~\ref{sec:constraints} by office and type of transfer, and the emerging-minus-advanced
+difference under three definitions: all recorded transfers in the six offices that record them, sales to unrelated
+buyers in the three offices whose records name the owners, and the latter counted from grant, the definition used to
+calibrate the markets-for-technology lever.
+
+\input{tables/tabS_sales}
+
 
 \begin{figure}[ht]
 \centering
@@ -253,6 +144,34 @@ counts measure only roughly.
 
 Figure~\ref{fig:models} sketches the two models.
 
+\paragraph{Deterministic model.} A patent earns $r_0 d^t$ in year $t$ after grant. At decision $j$, at time $t_j$,
+the owner pays $c_j$ to keep the patent for $L_j$ years and renews if
+$r_0 d^{t_j} \sum_{s<L_j} (\beta d)^s \ge c_j$, i.e.\ if $r_0 \ge \tau_j$. With returns falling and fees rising
+this rule is optimal, and a patent survives decision $j$ if $r_0 \ge \max_{l\le j}\tau_l$. In addition, at each
+decision the owner drops the patent with probability $h = 1\%$ for reasons unrelated to value. With
+$\ln r_0 \sim N(\alpha_g + \gamma \ln(1+c), \sigma)$, the likelihood of each patent's lapse or censoring decision
+follows directly. The discount factor is $\beta = 0.9$. Estimation is by maximum likelihood, office by office, on up
+to 60{,}000 patents per owner group.
+
+\paragraph{Learning model.} Log returns $x_t$ start at $x_0 \sim N(\mu_i, \sigma_0)$ and evolve as
+$x_{t+\Delta} = x_t + \Delta \ln d + e$, with $e \sim N\big(0,\, s^2(\varphi^{2t}-\varphi^{2(t+\Delta)})/(-2\ln\varphi)\big)$:
+a random walk with drift whose shocks shrink at rate $\varphi$ as the owner learns. The value of a patent at decision
+$j$ solves
+\[
+V_j(x) = \max\Big\{0,\; e^x \sum_{u<L_j} (\beta d)^u - c_j + \beta^{t_{j+1}-t_j} (1-h)\, E\,V_{j+1}(x')\Big\},
+\]
+so a patent may be kept below its current fee for the option of later renewals. Thresholds come from backward
+induction on a grid for each fee path, run to expiry. Expectations use Gauss--Hermite quadrature. Survival is
+simulated with common random numbers and a smoothed renewal indicator, and the likelihood is built from lapse and
+censoring counts in cells of fee path $\times$ owner group $\times$ citation band. Appendix
+Table~\ref{tab:learning} reports the estimates.
+
+\paragraph{Patent-level values.} For the values of Section~\ref{sec:values}, the learning model is re-estimated with a single prior for all owners
+($\mu_i$ depends on the citation band only). For each cell, 1{,}000 return paths are simulated; a patent that lapsed at
+decision $k$ weights each path by the probability of surviving to $k-1$ and lapsing at $k$, and a patent still alive
+at the end of the data by the probability of surviving all observed decisions, plus the value of optimal renewals
+after the data end. A patent's value is the weighted median over paths.
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{figures/fig8_models.png}
@@ -274,34 +193,6 @@ before July 2002), or per year from the grant announcement (Taiwan, whose 2002 s
 of the year paid (for Taiwan, the DGBAS index and the IMF implied PPP rate); fees due after 2024 are held at 2024
 prices. Russian lapse records end in 2022, so Russian patents are censored from mid-2022.
 
-\paragraph{Deterministic model.} A patent earns $r_0 d^t$ in year $t$ after grant. At decision $j$, at time $t_j$,
-the owner pays $c_j$ to keep the patent for $L_j$ years and renews if
-$r_0 d^{t_j} \sum_{s<L_j} (\beta d)^s \ge c_j$, i.e.\ if $r_0 \ge \tau_j$. With returns falling and fees rising
-this rule is optimal, and a patent survives decision $j$ if $r_0 \ge \max_{l\le j}\tau_l$. In addition, at each
-decision the owner drops the patent with probability $h = 1\%$ for reasons unrelated to value. With
-$\ln r_0 \sim N(\alpha_g + \gamma \ln(1+c), \sigma)$, the likelihood of each patent's lapse or censoring decision
-follows directly. The discount factor is $\beta = 0.9$. Estimation is by maximum likelihood, office by office, on up
-to 60{,}000 patents per owner group.
-
-\paragraph{Learning model.} Log returns $x_t$ start at $x_0 \sim N(\mu_i, \sigma_0)$ and evolve as
-$x_{t+\Delta} = x_t + \Delta \ln d + e$, with $e \sim N\big(0,\, s^2(\varphi^{2t}-\varphi^{2(t+\Delta)})/(-2\ln\varphi)\big)$:
-a random walk with drift whose shocks shrink at rate $\varphi$ as the owner learns. The value of a patent at decision
-$j$ solves
-\[
-V_j(x) = \max\Big\{0,\; e^x \sum_{u<L_j} (\beta d)^u - c_j + \beta^{t_{j+1}-t_j} (1-h)\, E\,V_{j+1}(x')\Big\},
-\]
-so a patent may be kept below its current fee for the option of later renewals. Thresholds come from backward
-induction on a grid for each fee path, run to expiry. Expectations use Gauss--Hermite quadrature. Survival is
-simulated with common random numbers and a smoothed renewal indicator, and the likelihood is built from lapse and
-censoring counts in cells of fee path $\times$ owner group $\times$ citation band. Table~\ref{tab:learning} reports the
-estimates.
-
-\paragraph{Patent-level values.} The learning model is re-estimated with a single prior for all owners
-($\mu_i$ depends on the citation band only). For each cell, 1{,}000 return paths are simulated; a patent that lapsed at
-decision $k$ weights each path by the probability of surviving to $k-1$ and lapsing at $k$, and a patent still alive
-at the end of the data by the probability of surviving all observed decisions, plus the value of optimal renewals
-after the data end. A patent's value is the weighted median over paths.
-
 \paragraph{Fee discounts.} For the fee-discount estimates in Sections~\ref{sec:values} and~\ref{sec:stake}, eligible owners are domestic firms with 1--99
 families and domestic universities. In China they pay 40\% of the fee in fee-years 1--3 from the grant year (to
 February 2001), 30\% in fee-years 1--3 (to August 2016), 15\% in fee-years 1--6 (to July 2018) and 15\% in fee-years
@@ -311,89 +202,15 @@ years 7--9 in July 2016 is not modelled).
 
 \paragraph{Models and decay rates.} The comparisons between owners do not depend on the model or on $d$. The ratio
 of small domestic to small foreign firms' median value at equal citations is, in the deterministic model with
-$d = 0.80$, 0.85 and 0.90, 2.15, 1.92 and 1.79 in China, 2.09, 2.45 and 1.78 in Korea, 1.36, 1.34 and 1.29 in the
-United States, 1.55, 1.40 and 1.40 in Germany, 1.09, 1.27 and 1.07 in the United Kingdom and 4.76, 4.08 and 3.30 in
-Japan; in the learning model ($d = 0.85$) it is 1.61, 2.16, 1.46, 1.31, 1.12 and 4.72. For universities the ratio
-is 0.35--0.42 in China in the deterministic model and 0.25 in the learning model, against 1.01--1.08 in the United
-States and 0.87--1.46 in Germany.
+$d = 0.80$, 0.85 and 0.90, 2.28, 2.04 and 1.87 in China, 3.06, 2.70 and 2.45 in Korea, 1.40, 1.35 and 1.31 in the
+United States, 1.69, 1.59 and 1.49 in Germany, 1.30, 1.26 and 1.23 in the United Kingdom and 5.32, 4.36 and 3.62 in
+Japan; in the learning model ($d = 0.85$) it is 2.02, 2.28, 1.54, 1.53, 1.02 and 4.49. For universities the ratio
+is 0.38--0.46 in China in the deterministic model and 0.27 in the learning model, against 1.02--1.07 in the United
+States and 0.90--1.48 in Germany.
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Learning model: rate of decline and fit}\label{tab:learning}
-\small
-% Source: em-patent-value output/learning_model_params*.csv, learning_model_fit*.csv (20_learning_model.py)
-\begin{tabular}{lcccccccccc}
-\toprule
- & CN & KR & RU & TW & CZ & US & JP & DE & GB & FR \\
-\midrule
-Free estimate of $d$        & 0.47\tnote{a} & 0.67\tnote{a} & 0.95\tnote{a} & 0.93 & 0.58\tnote{a} & 0.47\tnote{a} & 0.73\tnote{a} & 0.851 & 0.840 & 0.834 \\
-$\sigma_0$ at $d = 0.85$    & 1.13 & 1.35 & 7.39\tnote{a} & 2.14 & 1.92 & 2.64 & 2.91 & 1.53 & 1.89 & 1.74 \\
-Shock $s$                   & 0.99 & 0.64 & 1.39 & 1.06 & 1.21 & 0.34 & 0.99 & 1.01 & 1.03 & 1.16 \\
-Learning $\varphi$          & 0.95 & 0.99 & 0.94 & 0.99 & 0.72 & 0.99 & 0.99 & 0.86 & 0.83 & 0.89 \\
-Fit error (pp)              & 2.7 & 3.7 & 6.5 & 3.3 & 2.9 & 1.6 & 2.9 & 2.3 & 2.3 & 2.5 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Fit error: predicted minus observed share alive at 4, 8 and 12 years after grant, by owner group.
-\item[a] Not identified: the estimate comes with an implausibly wide spread of initial values.
-\item The other rows are estimated with $d = 0.85$ fixed in every office. Taiwan's free estimate rests on fees that
-rise in three-year steps; its reported standard error (0.002), like the others, understates the uncertainty.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\input{tables/tabS_learning}
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Patent-level values, domestic minus foreign owners, by office (log points)}\label{tab:patentvalues}
-\small
-% Source: em-patent-value output/patent_value_gaps*.csv (21_patent_values.py, 21b_value_gaps_all_owners.py)
-\begin{tabular}{lccccc}
-\toprule
- & All owners & Small firms & Mid-sized firms & Large firms & Universities \\
- & & (1--9) & (10--99) & (100+) & \\
-\midrule
-\multicolumn{6}{l}{\emph{A. Emerging-market offices}} \\
-China          & $0.25^{***}$ & $0.20^{***}$ & $0.40^{***}$ & $0.40^{**}$ & $-0.83^{***}$ \\
-               & (0.08) & (0.03) & (0.06) & (0.18) & (0.07) \\
-Korea          & $0.34^{***}$ & $0.49^{***}$ & $0.87^{***}$ & $0.14$ & $0.47^{**}$ \\
-               & (0.08) & (0.06) & (0.07) & (0.11) & (0.19) \\
-Russia\tnote{a}& -- & $-0.20$ & $1.75^{**}$ & $2.21$ & -- \\
-               &  & (0.63) & (0.74) & (1.95) &  \\
-Taiwan         & $0.84^{***}$ & $-0.07$ & $0.33^{***}$ & $1.09^{***}$ & $1.75^{***}$ \\
-               & (0.19) & (0.08) & (0.11) & (0.27) & (0.32) \\
-Czech Republic & $-0.04$ & $0.07$ & $-0.18$ & -- & $-0.16$ \\
-               & (0.16) & (0.20) & (0.23) &  & (0.57) \\
-\addlinespace
-\multicolumn{6}{l}{\emph{B. Advanced-economy offices}} \\
-United States  & $0.34^{***}$ & $0.23^{***}$ & $0.45^{***}$ & $0.41^{***}$ & $0.13$ \\
-               & (0.05) & (0.02) & (0.03) & (0.12) & (0.20) \\
-Japan          & $1.14^{***}$ & $1.22^{***}$ & $1.52^{***}$ & $0.91^{***}$ & $2.07^{***}$ \\
-               & (0.10) & (0.07) & (0.09) & (0.16) & (0.58) \\
-Germany        & $0.01$ & $0.20^{***}$ & $-0.02$ & $-0.01$ & $-0.18$ \\
-               & (0.07) & (0.06) & (0.07) & (0.10) & (0.33) \\
-United Kingdom & $0.06$ & $0.08$ & $0.03$ & $0.20$ & $-0.59^{***}$ \\
-               & (0.08) & (0.06) & (0.09) & (0.26) & (0.15) \\
-France         & $-0.04$ & $0.00$ & $0.06$ & $-0.06$ & $-0.48^{*}$ \\
-               & (0.09) & (0.07) & (0.09) & (0.14) & (0.27) \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} Posterior median value at grant of each patent from the learning model with a common prior
-($d=0.85$; 2024 PPP dollars), regressed on domestic owner $\times$ owner group with fee-path $\times$ citation-band and
-field effects, one regression per office (all owners: domestic owner with owner-group effects); standard errors
-clustered by owner in parentheses. 1.42 million patents (1.37 million without Russia, the sample of
-Figure~\ref{fig:valuespooled}), drawn at random, up to 60{,}000 per office, owner group and domestic status.
-Figure~\ref{fig:valuespooled} pools the offices in one regression, which weights them by the variation in ownership
-within fee-path $\times$ citation-band cells rather than by patents, so its estimates are not averages of this
-table. --: too few patents. Japanese university estimates are
-unstable across specifications. $^{*}$~$p<0.1$, $^{**}$~$p<0.05$, $^{***}$~$p<0.01$.
-\item[a] Not identified (Section~\ref{sec:values}), shown for completeness; domestic ownership is collinear with the fee path for all owners,
-and there are no foreign university patents in the Russian estimation sample.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\input{tables/tabS_patentvalues}
 
 \clearpage
 \newpage 
@@ -402,36 +219,12 @@ and there are no foreign university patents in the Russian estimation sample.
 
 Table~\ref{tab:levers-learning} repeats Table~\ref{tab:levers} with the learning model ($d=0.85$). Each patent's
 returns follow the model's random walk, and owners renew while the expected returns of keeping the patent, including
-the option of later renewals, exceed the fee; a lever therefore also changes the value of that option. Markets for technology are calibrated to the
-same survival gains as in Table~\ref{tab:levers}; the factors are 1.54 for small firms, 1.52 for mid-sized firms and
-21 for universities, against 1.41, 1.39 and 5.0 in the deterministic model. Levels are about ten times those of
-Table~\ref{tab:levers} for markets for technology and five times for university patenting; fee relief is still worth
-about a million dollars a cohort, so the ranking of the levers is unchanged.
+the option of later renewals, exceed the fee; a lever therefore also changes the value of that option. Markets for
+technology are calibrated to the same arm's-length survival targets as in Table~\ref{tab:levers}. Because owners already keep
+low-value patents for their option value, survival responds weakly to returns, and the factors are 1.30 for small
+firms, 1.52 for mid-sized firms and 9.6 for universities, against 1.22, 1.40 and 3.5 in the deterministic model. The
+resulting levels are several times those of Table~\ref{tab:levers} and rest on parameters that are not identified, notably the
+decay rate; they are shown only to compare the levers. Fee relief is still worth about a million dollars a cohort,
+so the ranking of the levers is unchanged.
 
-\begin{table}[ht]
-\centering
-\begin{threeparttable}
-\caption{Returns at stake per filing-year cohort, learning model (millions of 2024 PPP dollars)}\label{tab:levers-learning}
-\small
-% Source: em-patent-value output/policy_levers_learning.csv (26b_policy_levers_learning.py)
-\begin{tabular}{lcccc}
-\toprule
- & \multicolumn{2}{c}{Fee relief} & Markets for technology & University patenting \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
- & China & Korea & China & China \\
-\midrule
-Small firms (1--9)          & 0.12 & 0.4 & 1{,}250 &  \\
-Mid-sized firms (10--99)    & 0.05 & 0.3 & 992 &  \\
-Large firms (100+)          & n.e. & n.e. & 0 &  \\
-Universities                & 0.4  & 0.3 & 8{,}390 & 982--1{,}413 \\
-\addlinespace
-All owners                  & 0.6  & 0.9 & 10{,}633 & 982--1{,}413 \\
-\quad \% of national R\&D   & 0.00 & 0.00 & 11.30 & 1.04--1.50 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item \emph{Notes:} As Table~\ref{tab:levers}, with the learning model: 3{,}000 patents per owner group drawn from the
-estimation cells, 200 return paths each. n.e.: not eligible.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\input{tables/tabS_levers_learning}
