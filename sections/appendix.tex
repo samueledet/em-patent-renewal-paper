@@ -149,7 +149,7 @@ the owner pays $c_j$ to keep the patent for $L_j$ years and renews if
 $r_0 d^{t_j} \sum_{s<L_j} (\beta d)^s \ge c_j$, i.e.\ if $r_0 \ge \tau_j$. With returns falling and fees rising
 this rule is optimal, and a patent survives decision $j$ if $r_0 \ge \max_{l\le j}\tau_l$. In addition, at each
 decision the owner drops the patent with probability $h = 1\%$ for reasons unrelated to value. With
-$\ln r_0 \sim N(\alpha_g + \gamma \ln(1+c), \sigma)$, the likelihood of each patent's lapse or censoring decision
+$\ln r_0 \sim N(\alpha_g + \gamma \ln(1+n_i), \sigma)$, with $n_i$ the patent's forward citations, the likelihood of each patent's lapse or censoring decision
 follows directly. The discount factor is $\beta = 0.9$. Estimation is by maximum likelihood, office by office, on up
 to 60{,}000 patents per owner group.
 

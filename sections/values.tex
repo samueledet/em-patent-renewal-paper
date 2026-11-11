@@ -6,9 +6,12 @@ ten offices by year of life and period, deflated to 2024 prices with each countr
 converted at 2024 purchasing-power parities \citep{WDI}.
 
 \paragraph{Two models.} In the deterministic model \citep{SchankermanPakes1986}, a patent earns $r_0 d^t$ in year $t$
-after grant, with $\ln r_0 \sim N(\alpha_g + \gamma \ln(1+c), \sigma)$ for owner group $g$ (domestic or foreign
-$\times$ firm size or university). With returns falling and fees rising, the owner renews while returns over the
-period a fee covers exceed the fee. In this model the rate of decline $1-d$ is not identified, so I also estimate the
+after grant: $r_0$ is its return in the year of grant and $d$ the share of returns that carries over to the next
+year, so returns decline at rate $1-d$. Initial returns are log-normal, $\ln r_0 \sim N(\alpha_g + \gamma \ln(1+n_i),
+\sigma)$, where $n_i$ is the patent's forward citations, $\alpha_g$ the mean log return of owner group $g$
+(domestic or foreign $\times$ firm size or university), $\gamma$ the elasticity of returns with respect to citations
+and $\sigma$ the standard deviation of log returns. With returns falling and fees rising, the owner renews while
+returns over the period a fee covers exceed the fee. In this model the rate of decline $1-d$ is not identified, so I also estimate the
 learning model of \citet{Pakes1986}, in which log returns follow a random walk whose shocks shrink as owners learn,
 and owners may keep a patent worth less than its fee for the option of later renewals. Where fees rise steeply every year $d$ is identified: 0.852 in Germany, 0.832 in the United Kingdom
 and 0.830 in France, close to earlier renewal estimates, which put the decay of returns at 10--20 percent a
