@@ -20,8 +20,8 @@ Compile each file below as the main document (in Overleaf: Menu > Main document)
 
 - **Exhibits:** five in the manuscript (Tables 1--3, Figures 1--2), the maximum; each fits on one page.
 - **Words:** limit 7,000 - 5 x 200 = 6,000, counting text, footnotes and in-paper appendices (not the title, abstract,
-  exhibits, references or Supplemental Appendix). The word-count PDF has about 5,600 words, page numbers included.
-- **Abstract:** 99 words (limit 100).
+  exhibits, references or Supplemental Appendix). Estimated count after the November 2026 edits: about 5,200 words (text 4,800, Appendix A 370); recheck with the AEA tool.
+- **Abstract:** 98 words (limit 100).
 - **Anonymity:** no author name, affiliation, contact or website in the manuscript or Supplemental Appendix; prior
   work cited by author name.
 - **Self-contained:** data sources, variable definitions and the design are in the text; the renewal models are in
