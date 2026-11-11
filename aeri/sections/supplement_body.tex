@@ -58,9 +58,9 @@ national examination begins. Source: em-patent-value output/sample\_lags.csv.}
 \end{figure}
 
 \paragraph{Owners and quality.} Owner identities are PATSTAT's harmonised applicant names (HAN). Sector comes from
-PATSTAT's sector allocation. Applications with no recorded applicant have no HAN or sector and drop out of the
-owner-group estimates; they are common among domestic patents in Russia and foreign patents in Japan and Korea, where
-national records often omit applicants.
+PATSTAT's sector allocation. Applications with no recorded applicant or no sector cannot be classed as a firm or a
+university and are excluded; they are common among domestic patents in Russia and foreign patents in Japan and Korea,
+where national records often omit applicants.
 
 \paragraph{Corporate groups.} Firm size is the number of distinct DOCDB families filed worldwide in 2000--2005 by the
 owner's corporate group. Multinationals and Chinese groups file under several HANs (local subsidiaries, name variants),
@@ -73,7 +73,7 @@ owners, these links were correct in about 95\% of cases. A group's size is the l
 its group total and the totals of linked large groups. The change matters most for foreign owners: in China, 44\% of
 foreign small-firm patents move to a larger class against 6\% of domestic ones. A wider definition that also links
 owners by brand words anywhere in the name (Sony, Haier, Sinopec units) catches more groups but also unrelated firms
-that share a surname or a place name; it is used as a robustness check.
+that share a surname or a place name; it changes no survival estimate by more than 0.2 points.
 
 Citation counts are citing DOCDB families. Blocking citations are citing applications
 whose search report marks the patent X or Y. Grant lag is measured to the first publication flagged as a grant.

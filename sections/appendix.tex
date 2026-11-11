@@ -58,9 +58,9 @@ national examination begins. Source: em-patent-value output/sample\_lags.csv.}
 \end{figure}
 
 \paragraph{Owners and quality.} Owner identities are PATSTAT's harmonised applicant names (HAN). Sector comes from
-PATSTAT's sector allocation. Applications with no recorded applicant have no HAN or sector and drop out of the
-owner-group estimates; they are common among domestic patents in Russia and foreign patents in Japan and Korea, where
-national records often omit applicants.
+PATSTAT's sector allocation. Applications with no recorded applicant or no sector cannot be classed as a firm or a
+university and are excluded; they are common among domestic patents in Russia and foreign patents in Japan and Korea,
+where national records often omit applicants.
 
 \paragraph{Corporate groups.} Firm size is the number of distinct DOCDB families filed worldwide in 2000--2005 by the
 owner's corporate group. Multinationals and Chinese groups file under several HANs (local subsidiaries, name variants),
@@ -73,7 +73,7 @@ owners, these links were correct in about 95\% of cases. A group's size is the l
 its group total and the totals of linked large groups. The change matters most for foreign owners: in China, 44\% of
 foreign small-firm patents move to a larger class against 6\% of domestic ones. A wider definition that also links
 owners by brand words anywhere in the name (Sony, Haier, Sinopec units) catches more groups but also unrelated firms
-that share a surname or a place name; it is used as a robustness check.
+that share a surname or a place name; it changes no survival estimate by more than 0.2 points.
 
 Citation counts are citing DOCDB families. Blocking citations are citing applications
 whose search report marks the patent X or Y. Grant lag is measured to the first publication flagged as a grant.
@@ -146,21 +146,22 @@ Figure~\ref{fig:models} sketches the two models.
 
 \paragraph{Deterministic model.} A patent earns $r_0 d^t$ in year $t$ after grant. At decision $j$, at time $t_j$,
 the owner pays $c_j$ to keep the patent for $L_j$ years and renews if
-$r_0 d^{t_j} \sum_{s<L_j} (\beta d)^s \ge c_j$, i.e.\ if $r_0 \ge \tau_j$. With returns falling and fees rising
+$r_0 d^{t_j} \sum_{s<L_j} (\beta d)^s \ge c_j$, i.e.\ if $r_0 \ge \tau_j \equiv c_j / \big(d^{t_j} \sum_{s<L_j} (\beta d)^s\big)$. With returns falling and fees rising
 this rule is optimal, and a patent survives decision $j$ if $r_0 \ge \max_{l\le j}\tau_l$. In addition, at each
 decision the owner drops the patent with probability $h = 1\%$ for reasons unrelated to value. Given
 $\ln r_0 \sim N(\alpha_g + \gamma \ln(1+n_i), \sigma)$, where $n_i$ is the patent's forward citations, the likelihood of each patent's lapse or censoring decision
 follows directly. The discount factor is $\beta = 0.9$. Estimation is by maximum likelihood, office by office, on up
 to 60{,}000 patents per owner group.
 
-\paragraph{Learning model.} Log returns $x_t$ start at $x_0 \sim N(\mu_i, \sigma_0)$ and evolve as
+\paragraph{Learning model.} Log returns $x_t$ start at $x_0 \sim N(\mu_i, \sigma_0)$, where $\mu_i$ depends on the owner group and the
+patent's citation band, and evolve as
 $x_{t+\Delta} = x_t + \Delta \ln d + e$, with $e \sim N\big(0,\, s^2(\varphi^{2t}-\varphi^{2(t+\Delta)})/(-2\ln\varphi)\big)$:
-a random walk with drift whose shocks shrink at rate $\varphi$ as the owner learns. The value of a patent at decision
+a random walk with drift whose shocks, of scale $s$, shrink at rate $\varphi$ as the owner learns. The value of a patent at decision
 $j$ solves
 \[
 V_j(x) = \max\Big\{0,\; e^x \sum_{u<L_j} (\beta d)^u - c_j + \beta^{t_{j+1}-t_j} (1-h)\, E\,V_{j+1}(x')\Big\},
 \]
-so a patent may be kept below its current fee for the option of later renewals. Thresholds come from backward
+where $x'$ is the log return at the next decision, so a patent may be kept below its current fee for the option of later renewals. Thresholds come from backward
 induction on a grid for each fee path, run to expiry. Expectations use Gauss--Hermite quadrature. Survival is
 simulated with common random numbers and a smoothed renewal indicator, and the likelihood is built from lapse and
 censoring counts in cells of fee path $\times$ owner group $\times$ citation band. Appendix
